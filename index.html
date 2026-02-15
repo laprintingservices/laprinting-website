@@ -10,50 +10,6 @@
 
 <style>
 /* ===== GENERAL ===== */
-    .cart-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: black;
-    color: white;
-    font-size: 24px;
-    padding: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-#cart-count {
-    background: white;
-    color: black;
-    font-size: 14px;
-    padding: 2px 6px;
-    border-radius: 50%;
-    position: absolute;
-    top: -5px;
-    right: -5px;
-}
-
-.cart-modal {
-    display: none;
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 300px;
-    background: white;
-    border: 1px solid black;
-    padding: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
-.cart-content {
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.cart-content button {
-    margin-top: 5px;
-}
-
 body {
     margin: 0;
     font-family: 'League Spartan', sans-serif;
@@ -74,7 +30,7 @@ header {
 
 .header-container {
     display: flex;
-    justify-content: space-between; /* left & right */
+    justify-content: space-between; 
     align-items: center;
     padding: 15px 50px;
 }
@@ -92,7 +48,7 @@ header {
 
 .header-text h1 {
     margin: 0;
-    font-size: 42px; /* bigger main title */
+    font-size: 42px;
     color: white;
 }
 
@@ -319,22 +275,6 @@ footer {
 <body>
 
 <!-- Floating Cart Icon -->
-    <!-- Floating Cart Icon -->
-<div class="cart-icon" onclick="toggleCart()">
-    🛒
-    <span id="cart-count">0</span>
-</div>
-
-<!-- Cart Modal -->
-<div class="cart-modal" id="cartModal">
-    <div class="cart-content">
-        <h3>Your Cart</h3>
-        <div id="cart-items"></div>
-        <h4>Total: ₱<span id="cart-total">0</span></h4>
-        <button onclick="toggleCart()">Close</button>
-    </div>
-</div>
-
 <div class="cart-icon" onclick="toggleCart()">
     🛒
     <span id="cart-count">0</span>
