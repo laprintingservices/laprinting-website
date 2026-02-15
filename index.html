@@ -103,11 +103,71 @@ button {
     }
 }
 </style>
+    .cart-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: black;
+    color: white;
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#cart-count {
+    background: white;
+    color: black;
+    font-size: 14px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.cart-modal {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border: 1px solid black;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.cart-content {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.cart-content button {
+    margin-top: 5px;
+}
+
 </head>
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
 
 <body>
+<!-- Floating Cart Icon -->
+<div class="cart-icon" onclick="toggleCart()">
+    🛒
+    <span id="cart-count">0</span>
+</div>
 
+<!-- Cart Modal -->
+<div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+        <h3>Your Cart</h3>
+        <div id="cart-items"></div>
+        <h4>Total: ₱<span id="cart-total">0</span></h4>
+        <button onclick="toggleCart()">Close</button>
+    </div>
+</div>
+
+    
 <header>
     <div style="display:flex; align-items:center; justify-content: space-between; padding: 15px 50px;">
         <div style="display:flex; align-items:center;">
@@ -134,173 +194,133 @@ button {
     <a href="#contact" class="btn">Order Now</a>
 </section>
 
-<section class="section" id="products">
+<section id="products">
     <h2>Engraved Products</h2>
-
-    <div class="services">
+    <div class="products">
 
         <!-- Bamboo Pen -->
         <div class="card">
             <h4>Bamboo Pen</h4>
-            <p><strong>₱50</strong></p>
-
-            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
-                <button onclick="decrease('bamboopen')" style="width:30px;">-</button>
-                <input type="text" id="bamboopen" value="1" style="width:40px; text-align:center;" readonly>
-                <button onclick="increase('bamboopen')" style="width:30px;">+</button>
+            <p>Elegant engraved bamboo pen.</p>
+            <div>
+                <button onclick="decrease('bpen')">-</button>
+                <input type="text" id="bpen" value="1" readonly style="width:40px;text-align:center;">
+                <button onclick="increase('bpen')">+</button>
             </div>
-
-            <button onclick="addToCart('Bamboo Pen', 50, 'bamboopen')" style="margin-top:10px;">
-                Add to Cart
-            </button>
+            <button onclick="addToCart('Bamboo Pen', 99, 'bpen')">Add to Cart</button>
         </div>
 
         <!-- Notebook -->
         <div class="card">
             <h4>Notebook</h4>
-            <p><strong>₱120</strong></p>
-
-            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
-                <button onclick="decrease('notebook')" style="width:30px;">-</button>
-                <input type="text" id="notebook" value="1" style="width:40px; text-align:center;" readonly>
-                <button onclick="increase('notebook')" style="width:30px;">+</button>
+            <p>Custom engraved notebook cover.</p>
+            <div>
+                <button onclick="decrease('notebook')">-</button>
+                <input type="text" id="notebook" value="1" readonly style="width:40px;text-align:center;">
+                <button onclick="increase('notebook')">+</button>
             </div>
-
-            <button onclick="addToCart('Notebook', 120, 'notebook')" style="margin-top:10px;">
-                Add to Cart
-            </button>
+            <button onclick="addToCart('Notebook', 149, 'notebook')">Add to Cart</button>
         </div>
 
         <!-- Bamboo Keychain -->
         <div class="card">
             <h4>Bamboo Keychain</h4>
-            <p><strong>₱40</strong></p>
-
-            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
-                <button onclick="decrease('bambookeychain')" style="width:30px;">-</button>
-                <input type="text" id="bambookeychain" value="1" style="width:40px; text-align:center;" readonly>
-                <button onclick="increase('bambookeychain')" style="width:30px;">+</button>
+            <p>Eco-friendly engraved keychain.</p>
+            <div>
+                <button onclick="decrease('bkey')">-</button>
+                <input type="text" id="bkey" value="1" readonly style="width:40px;text-align:center;">
+                <button onclick="increase('bkey')">+</button>
             </div>
-
-            <button onclick="addToCart('Bamboo Keychain', 40, 'bambookeychain')" style="margin-top:10px;">
-                Add to Cart
-            </button>
+            <button onclick="addToCart('Bamboo Keychain', 59, 'bkey')">Add to Cart</button>
         </div>
 
         <!-- Leather Keychain -->
         <div class="card">
             <h4>Leather Keychain</h4>
-            <p><strong>₱80</strong></p>
-
-            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
-                <button onclick="decrease('leatherkeychain')" style="width:30px;">-</button>
-                <input type="text" id="leatherkeychain" value="1" style="width:40px; text-align:center;" readonly>
-                <button onclick="increase('leatherkeychain')" style="width:30px;">+</button>
+            <p>Premium engraved leather keychain.</p>
+            <div>
+                <button onclick="decrease('lkey')">-</button>
+                <input type="text" id="lkey" value="1" readonly style="width:40px;text-align:center;">
+                <button onclick="increase('lkey')">+</button>
             </div>
-
-            <button onclick="addToCart('Leather Keychain', 80, 'leatherkeychain')" style="margin-top:10px;">
-                Add to Cart
-            </button>
+            <button onclick="addToCart('Leather Keychain', 79, 'lkey')">Add to Cart</button>
         </div>
 
         <!-- Cutlery Set -->
         <div class="card">
             <h4>Cutlery Set</h4>
-            <p><strong>₱150</strong></p>
-
-            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
-                <button onclick="decrease('cutlery')" style="width:30px;">-</button>
-                <input type="text" id="cutlery" value="1" style="width:40px; text-align:center;" readonly>
-                <button onclick="increase('cutlery')" style="width:30px;">+</button>
+            <p>Engraved reusable cutlery set.</p>
+            <div>
+                <button onclick="decrease('cutlery')">-</button>
+                <input type="text" id="cutlery" value="1" readonly style="width:40px;text-align:center;">
+                <button onclick="increase('cutlery')">+</button>
             </div>
-
-            <button onclick="addToCart('Cutlery Set', 150, 'cutlery')" style="margin-top:10px;">
-                Add to Cart
-            </button>
+            <button onclick="addToCart('Cutlery Set', 199, 'cutlery')">Add to Cart</button>
         </div>
 
         <!-- Bottle Opener -->
         <div class="card">
             <h4>Bottle Opener</h4>
-            <p><strong>₱60</strong></p>
-
-            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
-                <button onclick="decrease('bottleopener')" style="width:30px;">-</button>
-                <input type="text" id="bottleopener" value="1" style="width:40px; text-align:center;" readonly>
-                <button onclick="increase('bottleopener')" style="width:30px;">+</button>
+            <p>Custom engraved metal opener.</p>
+            <div>
+                <button onclick="decrease('opener')">-</button>
+                <input type="text" id="opener" value="1" readonly style="width:40px;text-align:center;">
+                <button onclick="increase('opener')">+</button>
             </div>
-
-            <button onclick="addToCart('Bottle Opener', 60, 'bottleopener')" style="margin-top:10px;">
-                Add to Cart
-            </button>
+            <button onclick="addToCart('Bottle Opener', 89, 'opener')">Add to Cart</button>
         </div>
 
         <!-- Bamboo Mirror -->
         <div class="card">
             <h4>Bamboo Mirror</h4>
-            <p><strong>₱90</strong></p>
-
-            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
-                <button onclick="decrease('bamboomirror')" style="width:30px;">-</button>
-                <input type="text" id="bamboomirror" value="1" style="width:40px; text-align:center;" readonly>
-                <button onclick="increase('bamboomirror')" style="width:30px;">+</button>
+            <p>Stylish engraved bamboo mirror.</p>
+            <div>
+                <button onclick="decrease('bmirror')">-</button>
+                <input type="text" id="bmirror" value="1" readonly style="width:40px;text-align:center;">
+                <button onclick="increase('bmirror')">+</button>
             </div>
-
-            <button onclick="addToCart('Bamboo Mirror', 90, 'bamboomirror')" style="margin-top:10px;">
-                Add to Cart
-            </button>
+            <button onclick="addToCart('Bamboo Mirror', 129, 'bmirror')">Add to Cart</button>
         </div>
 
         <!-- Mini Folding Mirror -->
         <div class="card">
             <h4>Mini Folding Mirror</h4>
-            <p><strong>₱70</strong></p>
-
-            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
-                <button onclick="decrease('foldingmirror')" style="width:30px;">-</button>
-                <input type="text" id="foldingmirror" value="1" style="width:40px; text-align:center;" readonly>
-                <button onclick="increase('foldingmirror')" style="width:30px;">+</button>
+            <p>Compact engraved folding mirror.</p>
+            <div>
+                <button onclick="decrease('mmirror')">-</button>
+                <input type="text" id="mmirror" value="1" readonly style="width:40px;text-align:center;">
+                <button onclick="increase('mmirror')">+</button>
             </div>
-
-            <button onclick="addToCart('Mini Folding Mirror', 70, 'foldingmirror')" style="margin-top:10px;">
-                Add to Cart
-            </button>
+            <button onclick="addToCart('Mini Folding Mirror', 99, 'mmirror')">Add to Cart</button>
         </div>
 
         <!-- ID Card Holder -->
         <div class="card">
             <h4>ID Card Holder</h4>
-            <p><strong>₱100</strong></p>
-
-            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
-                <button onclick="decrease('idholder')" style="width:30px;">-</button>
-                <input type="text" id="idholder" value="1" style="width:40px; text-align:center;" readonly>
-                <button onclick="increase('idholder')" style="width:30px;">+</button>
+            <p>Engraved professional ID holder.</p>
+            <div>
+                <button onclick="decrease('idholder')">-</button>
+                <input type="text" id="idholder" value="1" readonly style="width:40px;text-align:center;">
+                <button onclick="increase('idholder')">+</button>
             </div>
-
-            <button onclick="addToCart('ID Card Holder', 100, 'idholder')" style="margin-top:10px;">
-                Add to Cart
-            </button>
+            <button onclick="addToCart('ID Card Holder', 119, 'idholder')">Add to Cart</button>
         </div>
 
         <!-- Wallet -->
         <div class="card">
             <h4>Wallet</h4>
-            <p><strong>₱250</strong></p>
-
-            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
-                <button onclick="decrease('wallet')" style="width:30px;">-</button>
-                <input type="text" id="wallet" value="1" style="width:40px; text-align:center;" readonly>
-                <button onclick="increase('wallet')" style="width:30px;">+</button>
+            <p>Premium engraved wallet.</p>
+            <div>
+                <button onclick="decrease('wallet')">-</button>
+                <input type="text" id="wallet" value="1" readonly style="width:40px;text-align:center;">
+                <button onclick="increase('wallet')">+</button>
             </div>
-
-            <button onclick="addToCart('Wallet', 250, 'wallet')" style="margin-top:10px;">
-                Add to Cart
-            </button>
+            <button onclick="addToCart('Wallet', 299, 'wallet')">Add to Cart</button>
         </div>
 
     </div>
 </section>
+
 
 
 <section class="section" id="cart">
@@ -327,6 +347,58 @@ button {
 <script>
 let cart = [];
 
+function addToCart(name, price, id) {
+    let quantity = parseInt(document.getElementById(id).value);
+
+    let existing = cart.find(item => item.name === name);
+    if (existing) {
+        existing.quantity += quantity;
+    } else {
+        cart.push({ name, price, quantity });
+    }
+
+    updateCart();
+}
+
+function updateCart() {
+    let cartItems = document.getElementById("cart-items");
+    let cartCount = document.getElementById("cart-count");
+    let cartTotal = document.getElementById("cart-total");
+
+    cartItems.innerHTML = "";
+    let total = 0;
+    let count = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        count += item.quantity;
+
+        cartItems.innerHTML += `
+            <div>
+                <strong>${item.name}</strong><br>
+                ₱${item.price} x ${item.quantity} 
+                = ₱${item.price * item.quantity}
+                <br>
+                <button onclick="removeItem(${index})">Remove</button>
+                <hr>
+            </div>
+        `;
+    });
+
+    cartTotal.textContent = total;
+    cartCount.textContent = count;
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+function toggleCart() {
+    let modal = document.getElementById("cartModal");
+    modal.style.display = modal.style.display === "block" ? "none" : "block";
+}
+
 function increase(id) {
     let input = document.getElementById(id);
     input.value = parseInt(input.value) + 1;
@@ -338,45 +410,8 @@ function decrease(id) {
         input.value = parseInt(input.value) - 1;
     }
 }
-
-function addToCart(name, price, id) {
-    let quantity = parseInt(document.getElementById(id).value);
-
-    cart.push({ name, price, quantity });
-
-    updateCart();
-}
-
-function removeItem(index) {
-    cart.splice(index, 1);
-    updateCart();
-}
-
-function updateCart() {
-    let cartItemsDiv = document.getElementById("cart-items");
-    let cartCount = document.getElementById("cart-count");
-    let cartTotal = document.getElementById("cart-total");
-
-    cartItemsDiv.innerHTML = "";
-    let total = 0;
-    let count = 0;
-
-    cart.forEach((item, index) => {
-        total += item.price * item.quantity;
-        count += item.quantity;
-
-        cartItemsDiv.innerHTML += `
-            <div style="margin-bottom:10px;">
-                ${item.quantity} x ${item.name} - ₱${item.price * item.quantity}
-                <button onclick="removeItem(${index})">Remove</button>
-            </div>
-        `;
-    });
-
-    cartCount.innerText = count;
-    cartTotal.innerText = total;
-}
 </script>
+
 
 
 </body>
