@@ -139,10 +139,21 @@ button {
     <h3 style="margin-top:40px;">Engraved</h3>
     <div class="services">
 
-        <div class="card">
-            <h4>Engraved Ballpen</h4>
-            <p>Custom name engraving for giveaways and corporate use.</p>
-        </div>
+       <div class="card">
+    <h4>Engraved Ballpen</h4>
+    <p>Custom name engraving for giveaways and corporate use.</p>
+
+    <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
+        <button onclick="decrease('ballpen')" style="width:30px;">-</button>
+        <input type="text" id="ballpen" value="1" style="width:40px; text-align:center;" readonly>
+        <button onclick="increase('ballpen')" style="width:30px;">+</button>
+    </div>
+
+    <button onclick="addToCart('Engraved Ballpen', 'ballpen')" style="margin-top:10px;">
+        Add to Cart
+    </button>
+</div>
+
 
         <div class="card">
             <h4>Engraved Keychain</h4>
@@ -212,6 +223,27 @@ button {
 <footer>
     © 2022 L.A. Printing Services | All Rights Reserved
 </footer>
+
+<script>
+function increase(id) {
+    let input = document.getElementById(id);
+    input.value = parseInt(input.value) + 1;
+}
+
+function decrease(id) {
+    let input = document.getElementById(id);
+    if (parseInt(input.value) > 1) {
+        input.value = parseInt(input.value) - 1;
+    }
+}
+
+function addToCart(productName, id) {
+    let quantity = document.getElementById(id).value;
+    alert(quantity + " x " + productName + " added to cart!");
+}
+</script>
+
+
 
 </body>
 </html>
