@@ -1,81 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>L.A. Printing Services</title>
 
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-    .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
 
-.card {
-    border: 1px solid black;
-    padding: 15px;
-    text-align: center;
-    background: white;
-}
-
-body {
-    margin: 0;
-    font-family: 'League Spartan', sans-serif;
-    background-color: #ffffff;
-    color: #111;
-}
-
-header {
-    background: #000;
-    color: white;
-    padding: 15px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header h1 {
-    margin: 0;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-}
-
-.hero {
-    background: #f5f5f5;
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.hero h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
-}
-
-.btn {
-    background: black;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.section {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.services {
+/* PRODUCTS LAYOUT */
+.products {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
+    padding: 40px;
 }
 
 .card {
@@ -86,38 +27,32 @@ nav a {
     border-radius: 10px;
 }
 
-footer {
+/* BODY */
+body {
+    margin: 0;
+    font-family: 'League Spartan', sans-serif;
+    background-color: #ffffff;
+    color: #111;
+}
+
+/* HEADER */
+header {
     background: #000;
     color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: 40px;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-input, textarea {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-}
-
-button {
-    padding: 10px 20px;
-    background: black;
-    border: none;
+nav a {
     color: white;
-    border-radius: 25px;
-    cursor: pointer;
+    text-decoration: none;
+    margin-left: 20px;
 }
 
-@media(max-width: 768px){
-    .services {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-</style>
-    .cart-icon {
+/* FLOATING CART */
+.cart-icon {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -152,14 +87,8 @@ button {
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-.cart-content {
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.cart-content button {
-    margin-top: 5px;
-}
+</style>
+</head>
 
 </head>
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
@@ -196,7 +125,7 @@ button {
     <a href="#">Home</a>
     <a href="#products">Products</a>
     <a href="#contact">Contact</a>
-    <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
+    <a href="#cart">
 </nav>
 
     </div>
