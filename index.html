@@ -118,11 +118,13 @@ button {
                 L.A. Printing Services
             </h1>
         </div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#products">Products</a>
-            <a href="#contact">Contact</a>
-        </nav>
+<nav>
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+    <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
+</nav>
+
     </div>
 </header>
 
@@ -139,9 +141,10 @@ button {
     <h3 style="margin-top:40px;">Engraved</h3>
     <div class="services">
 
-       <div class="card">
+      <div class="card">
     <h4>Engraved Ballpen</h4>
     <p>Custom name engraving for giveaways and corporate use.</p>
+    <p><strong>₱50</strong></p>
 
     <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
         <button onclick="decrease('ballpen')" style="width:30px;">-</button>
@@ -149,11 +152,10 @@ button {
         <button onclick="increase('ballpen')" style="width:30px;">+</button>
     </div>
 
-    <button onclick="addToCart('Engraved Ballpen', 'ballpen')" style="margin-top:10px;">
+    <button onclick="addToCart('Engraved Ballpen', 50, 'ballpen')" style="margin-top:10px;">
         Add to Cart
     </button>
 </div>
-
 
         <div class="card">
             <h4>Engraved Keychain</h4>
@@ -209,6 +211,12 @@ button {
     </div>
 </section>
 
+<section class="section" id="cart">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <h3>Total: ₱<span id="cart-total">0</span></h3>
+</section>
+    
 <section class="section" id="contact">
     <h2>Contact Us</h2>
     <p>Send us your file and printing details.</p>
@@ -225,6 +233,8 @@ button {
 </footer>
 
 <script>
+let cart = [];
+
 function increase(id) {
     let input = document.getElementById(id);
     input.value = parseInt(input.value) + 1;
@@ -237,12 +247,44 @@ function decrease(id) {
     }
 }
 
-function addToCart(productName, id) {
-    let quantity = document.getElementById(id).value;
-    alert(quantity + " x " + productName + " added to cart!");
+function addToCart(name, price, id) {
+    let quantity = parseInt(document.getElementById(id).value);
+
+    cart.push({ name, price, quantity });
+
+    updateCart();
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+function updateCart() {
+    let cartItemsDiv = document.getElementById("cart-items");
+    let cartCount = document.getElementById("cart-count");
+    let cartTotal = document.getElementById("cart-total");
+
+    cartItemsDiv.innerHTML = "";
+    let total = 0;
+    let count = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        count += item.quantity;
+
+        cartItemsDiv.innerHTML += `
+            <div style="margin-bottom:10px;">
+                ${item.quantity} x ${item.name} - ₱${item.price * item.quantity}
+                <button onclick="removeItem(${index})">Remove</button>
+            </div>
+        `;
+    });
+
+    cartCount.innerText = count;
+    cartTotal.innerText = total;
 }
 </script>
-
 
 
 </body>
