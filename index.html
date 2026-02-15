@@ -8,6 +8,46 @@
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+
+    /* Header Left (Logo + Business Name) */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* space between logo and text */
+}
+
+/* Text part */
+.header-text h1 {
+    margin: 0;
+    font-size: 36px; /* bigger font for main title */
+    font-family: 'League Spartan', sans-serif;
+    line-height: 1.1;
+    color: white;
+}
+
+.header-text h2 {
+    margin: 0;
+    font-size: 18px; /* smaller subtitle */
+    font-weight: normal;
+    font-family: 'League Spartan', sans-serif;
+    color: white;
+    line-height: 1.1;
+}
+
+/* Header right nav */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-right a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
     .header-left {
     display: flex;
     align-items: center;
@@ -279,20 +319,24 @@ button {
 </div>
 
 <header>
-    <div class="header-left">
-        <img src="logo.png" alt="L.A. Printing Logo" style="height:60px; width:auto; margin-right:15px;">
-        <div class="header-text">
-            <h1>L.A. Printing</h1>
-            <h2>Engraving Services</h2>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 50px;">
+        <!-- LEFT: Logo + Text -->
+        <div class="header-left">
+            <img src="logo.png" alt="Logo" style="height:60px; width:auto;">
+            <div class="header-text">
+                <h1>L.A. Printing</h1>
+                <h2>Engraving Services</h2>
+            </div>
+        </div>
+
+        <!-- RIGHT: Navigation -->
+        <div class="header-right">
+            <a href="#">Home</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
         </div>
     </div>
-    <nav class="header-right">
-        <a href="#">Home</a>
-        <a href="#products">Products</a>
-        <a href="#contact">Contact</a>
-    </nav>
 </header>
-
 
 
 <section class="hero">
