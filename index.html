@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>L.A. Printing Services</title>
 
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-/* ---------- General Styles ---------- */
+/* ===== GENERAL ===== */
 body {
     margin: 0;
     font-family: 'League Spartan', sans-serif;
@@ -21,12 +22,15 @@ a {
     color: inherit;
 }
 
-/* ---------- Header ---------- */
+/* ===== HEADER ===== */
 header {
     background: #000;
     color: white;
+}
+
+.header-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* left & right */
     align-items: center;
     padding: 15px 50px;
 }
@@ -44,16 +48,15 @@ header {
 
 .header-text h1 {
     margin: 0;
-    font-size: 44px; /* larger main title */
-    line-height: 1.1;
+    font-size: 42px; /* bigger main title */
+    color: white;
 }
 
 .header-text h2 {
     margin: 0;
-    font-size: 20px; /* slightly bigger subtitle */
+    font-size: 18px;
+    color: white;
     font-weight: normal;
-    color: #fff;
-    line-height: 1.1;
 }
 
 .header-right {
@@ -72,11 +75,11 @@ header {
     text-decoration: underline;
 }
 
-/* ---------- Hero ---------- */
+/* ===== HERO SECTION ===== */
 .hero {
     background: #f5f5f5;
     text-align: center;
-    padding: 80px 20px;
+    padding: 100px 20px;
 }
 
 .hero h2 {
@@ -90,66 +93,10 @@ header {
     padding: 10px 20px;
     border-radius: 25px;
     font-weight: bold;
+    display: inline-block;
 }
 
-/* ---------- Products ---------- */
-    <section class="section" id="products">
-    <h2>Engraved Products</h2>
-    <div class="products">
-
-        <!-- Bamboo Pen -->
-        <div class="card">
-            <h4>Bamboo Pen</h4>
-            <p>Elegant engraved bamboo pen.</p>
-            <div>
-                <button onclick="decrease('bpen')">-</button>
-                <input type="text" id="bpen" value="1" readonly>
-                <button onclick="increase('bpen')">+</button>
-            </div>
-            <button onclick="addToCart('Bamboo Pen', 99, 'bpen')">Add to Cart</button>
-        </div>
-
-        <!-- Notebook -->
-        <div class="card">
-            <h4>Notebook</h4>
-            <p>Custom engraved notebook cover.</p>
-            <div>
-                <button onclick="decrease('notebook')">-</button>
-                <input type="text" id="notebook" value="1" readonly>
-                <button onclick="increase('notebook')">+</button>
-            </div>
-            <button onclick="addToCart('Notebook', 149, 'notebook')">Add to Cart</button>
-        </div>
-
-        <!-- Bamboo Keychain -->
-        <div class="card">
-            <h4>Bamboo Keychain</h4>
-            <p>Eco-friendly engraved keychain.</p>
-            <div>
-                <button onclick="decrease('bkey')">-</button>
-                <input type="text" id="bkey" value="1" readonly>
-                <button onclick="increase('bkey')">+</button>
-            </div>
-            <button onclick="addToCart('Bamboo Keychain', 59, 'bkey')">Add to Cart</button>
-        </div>
-
-        <!-- Leather Keychain -->
-        <div class="card">
-            <h4>Leather Keychain</h4>
-            <p>Premium engraved leather keychain.</p>
-            <div>
-                <button onclick="decrease('lkey')">-</button>
-                <input type="text" id="lkey" value="1" readonly>
-                <button onclick="increase('lkey')">+</button>
-            </div>
-            <button onclick="addToCart('Leather Keychain', 79, 'lkey')">Add to Cart</button>
-        </div>
-
-        <!-- ...and so on for all your other products ... -->
-
-    </div>
-</section>
-
+/* ===== PRODUCTS ===== */
 .section {
     padding: 60px 20px;
     text-align: center;
@@ -179,10 +126,19 @@ header {
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
+.card h4 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 10px;
+}
+
 .card button {
     margin-top: 10px;
     width: 100%;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .card div button {
@@ -200,14 +156,22 @@ header {
     border: 1px solid #ccc;
 }
 
+.card button:hover,
+.card div button:hover {
+    background: #333;
+    color: white;
+}
+
+/* ===== CONTACT ===== */
 input, textarea {
     width: 80%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-button {
+form button {
     padding: 10px 20px;
     background: black;
     border: none;
@@ -216,13 +180,7 @@ button {
     cursor: pointer;
 }
 
-.card button:hover,
-.card div button:hover {
-    background: #333;
-    color: white;
-}
-
-/* ---------- Footer ---------- */
+/* ===== FOOTER ===== */
 footer {
     background: #000;
     color: white;
@@ -231,15 +189,7 @@ footer {
     margin-top: 40px;
 }
 
-/* ---------- Responsive ---------- */
-@media(max-width: 768px){
-    .products {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-/* ---------- Floating Cart ---------- */
+/* ===== FLOATING CART ===== */
 .cart-icon {
     position: fixed;
     bottom: 20px;
@@ -286,10 +236,10 @@ footer {
     margin-top: 5px;
 }
 
-/* ---------- Add-to-Cart Popup ---------- */
+/* Add-to-Cart popup */
 .added-popup {
     position: fixed;
-    bottom: 120px; /* moved above floating cart */
+    bottom: 80px;
     right: 50%;
     transform: translateX(50%);
     background: black;
@@ -301,6 +251,24 @@ footer {
     transition: opacity 0.3s, bottom 0.3s;
     z-index: 2000;
     font-weight: bold;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 768px){
+    .products {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+    }
+
+    .header-right {
+        gap: 15px;
+    }
 }
 </style>
 </head>
@@ -322,42 +290,54 @@ footer {
     </div>
 </div>
 
-<!-- Add-to-Cart Popup -->
-<div class="added-popup" id="addedPopup">Item added to cart!</div>
-
-<!-- Header -->
+<!-- HEADER -->
 <header>
-  <div class="header-left">
-    <img src="logo.png" alt="Logo">
-    <div class="header-text">
-        <h1>L.A. Printing</h1>
-        <h2>Engraving Services</h2>
+    <div class="header-container">
+        <div class="header-left">
+            <img src="logo.png" alt="Logo">
+            <div class="header-text">
+                <h1>L.A. Printing</h1>
+                <h2>Engraving Services</h2>
+            </div>
+        </div>
+        <nav class="header-right">
+            <a href="#">Home</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </div>
-  </div>
-
-  <nav class="header-right">
-    <a href="#">Home</a>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
-  </nav>
 </header>
 
-<!-- Hero -->
+<!-- HERO SECTION -->
 <section class="hero">
     <h2>Fast. Reliable. Professional Printing.</h2>
     <p>Your trusted partner for quality print solutions.</p>
     <a href="#contact" class="btn">Order Now</a>
 </section>
 
-<!-- Products -->
+<!-- PRODUCTS SECTION -->
 <section class="section" id="products">
     <h2>Engraved Products</h2>
     <div class="products">
-        <!-- Add all your product cards here, same as before -->
+
+        <!-- Sample Card -->
+        <div class="card">
+            <h4>Bamboo Pen</h4>
+            <p>Elegant engraved bamboo pen.</p>
+            <div>
+                <button onclick="decrease('bpen')">-</button>
+                <input type="text" id="bpen" value="1" readonly>
+                <button onclick="increase('bpen')">+</button>
+            </div>
+            <button onclick="addToCart('Bamboo Pen', 99, 'bpen')">Add to Cart</button>
+        </div>
+
+        <!-- You can duplicate other product cards here -->
+
     </div>
 </section>
 
-<!-- Contact -->
+<!-- CONTACT SECTION -->
 <section class="section" id="contact">
     <h2>Contact Us</h2>
     <p>Send us your file and printing details.</p>
@@ -369,12 +349,15 @@ footer {
     </form>
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer>
     © 2026 L.A. Printing Services | All Rights Reserved
 </footer>
 
-<!-- JS -->
+<!-- ADD-TO-CART POPUP -->
+<div class="added-popup" id="addedPopup">Item added to cart!</div>
+
+<!-- JAVASCRIPT -->
 <script>
 let cart = [];
 
@@ -393,10 +376,10 @@ function addToCart(name, price, id) {
 function showAddedPopup(){
     const popup = document.getElementById('addedPopup');
     popup.style.opacity = '1';
-    popup.style.bottom = '140px';
+    popup.style.bottom = '100px';
     setTimeout(() => {
         popup.style.opacity = '0';
-        popup.style.bottom = '120px';
+        popup.style.bottom = '80px';
     }, 1500);
 }
 
