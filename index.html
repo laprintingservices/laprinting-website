@@ -270,6 +270,43 @@ footer {
         gap: 15px;
     }
 }
+    /* ===== CARD BUTTONS ===== */
+
+/* Quantity buttons (- / +) */
+.card div button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;       /* makes it circular */
+    background: black;        /* filled black */
+    color: white;             /* white text */
+    font-weight: bold;
+    border: none;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.card div button:hover {
+    background: #333;         /* slightly lighter on hover */
+}
+
+/* Add to Cart button */
+.card > button {
+    margin-top: 10px;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 25px;
+    background: black;        /* filled black */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.card > button:hover {
+    background: #333;
+}
+
 </style>
 </head>
 <body>
