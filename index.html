@@ -181,6 +181,33 @@ button {
 .cart-content button {
     margin-top: 5px;
 }
+    /* Add-to-Cart popup */
+.added-popup {
+    position: fixed;
+    bottom: 80px;
+    right: 50%;
+    transform: translateX(50%);
+    background: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, bottom 0.3s;
+    z-index: 2000;
+    font-weight: bold;
+}
+
+/* Button hover effects */
+.card button:hover {
+    background: #333;
+}
+
+.card div button:hover {
+    background: #333;
+    color: white;
+}
+
 </style>
 </head>
 <body>
@@ -375,6 +402,18 @@ function addToCart(name, price, id) {
         cart.push({name, price, quantity});
     }
     updateCart();
+    showAddedPopup();
+}
+
+// Show “Item added” popup
+function showAddedPopup(){
+    const popup = document.getElementById('addedPopup');
+    popup.style.opacity = '1';
+    popup.style.bottom = '100px';
+    setTimeout(() => {
+        popup.style.opacity = '0';
+        popup.style.bottom = '80px';
+    }, 1500);
 }
 
 function updateCart() {
@@ -426,6 +465,8 @@ function decrease(id){
     }
 }
 </script>
+
+    <div class="added-popup" id="addedPopup">Item added to cart!</div>
 
 </body>
 </html>
