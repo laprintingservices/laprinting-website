@@ -93,6 +93,63 @@ header {
 }
 
 /* ---------- Products ---------- */
+    <section class="section" id="products">
+    <h2>Engraved Products</h2>
+    <div class="products">
+
+        <!-- Bamboo Pen -->
+        <div class="card">
+            <h4>Bamboo Pen</h4>
+            <p>Elegant engraved bamboo pen.</p>
+            <div>
+                <button onclick="decrease('bpen')">-</button>
+                <input type="text" id="bpen" value="1" readonly>
+                <button onclick="increase('bpen')">+</button>
+            </div>
+            <button onclick="addToCart('Bamboo Pen', 99, 'bpen')">Add to Cart</button>
+        </div>
+
+        <!-- Notebook -->
+        <div class="card">
+            <h4>Notebook</h4>
+            <p>Custom engraved notebook cover.</p>
+            <div>
+                <button onclick="decrease('notebook')">-</button>
+                <input type="text" id="notebook" value="1" readonly>
+                <button onclick="increase('notebook')">+</button>
+            </div>
+            <button onclick="addToCart('Notebook', 149, 'notebook')">Add to Cart</button>
+        </div>
+
+        <!-- Bamboo Keychain -->
+        <div class="card">
+            <h4>Bamboo Keychain</h4>
+            <p>Eco-friendly engraved keychain.</p>
+            <div>
+                <button onclick="decrease('bkey')">-</button>
+                <input type="text" id="bkey" value="1" readonly>
+                <button onclick="increase('bkey')">+</button>
+            </div>
+            <button onclick="addToCart('Bamboo Keychain', 59, 'bkey')">Add to Cart</button>
+        </div>
+
+        <!-- Leather Keychain -->
+        <div class="card">
+            <h4>Leather Keychain</h4>
+            <p>Premium engraved leather keychain.</p>
+            <div>
+                <button onclick="decrease('lkey')">-</button>
+                <input type="text" id="lkey" value="1" readonly>
+                <button onclick="increase('lkey')">+</button>
+            </div>
+            <button onclick="addToCart('Leather Keychain', 79, 'lkey')">Add to Cart</button>
+        </div>
+
+        <!-- ...and so on for all your other products ... -->
+
+    </div>
+</section>
+
 .section {
     padding: 60px 20px;
     text-align: center;
