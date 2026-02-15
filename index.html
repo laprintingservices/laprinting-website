@@ -101,5 +101,297 @@ header {
 .products {
     display: flex;
     flex-wrap: wrap;
-    justify-conte
+    justify-content: center;
+    gap: 25px;
+    padding: 40px 20px;
+}
 
+.card {
+    background: white;
+    padding: 20px;
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.card button {
+    margin-top: 10px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.card div button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.card div input {
+    width: 40px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    background: black;
+    border: none;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.card button:hover,
+.card div button:hover {
+    background: #333;
+    color: white;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background: #000;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width: 768px){
+    .products {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* ---------- Floating Cart ---------- */
+.cart-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: black;
+    color: white;
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#cart-count {
+    background: white;
+    color: black;
+    font-size: 14px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.cart-modal {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border: 1px solid black;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.cart-content {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.cart-content button {
+    margin-top: 5px;
+}
+
+/* ---------- Add-to-Cart Popup ---------- */
+.added-popup {
+    position: fixed;
+    bottom: 120px; /* moved above floating cart */
+    right: 50%;
+    transform: translateX(50%);
+    background: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, bottom 0.3s;
+    z-index: 2000;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<!-- Floating Cart Icon -->
+<div class="cart-icon" onclick="toggleCart()">
+    🛒
+    <span id="cart-count">0</span>
+</div>
+
+<!-- Cart Modal -->
+<div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+        <h3>Your Cart</h3>
+        <div id="cart-items"></div>
+        <h4>Total: ₱<span id="cart-total">0</span></h4>
+        <button onclick="toggleCart()">Close</button>
+    </div>
+</div>
+
+<!-- Add-to-Cart Popup -->
+<div class="added-popup" id="addedPopup">Item added to cart!</div>
+
+<!-- Header -->
+<header>
+  <div class="header-left">
+    <img src="logo.png" alt="Logo">
+    <div class="header-text">
+        <h1>L.A. Printing</h1>
+        <h2>Engraving Services</h2>
+    </div>
+  </div>
+
+  <nav class="header-right">
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <h2>Fast. Reliable. Professional Printing.</h2>
+    <p>Your trusted partner for quality print solutions.</p>
+    <a href="#contact" class="btn">Order Now</a>
+</section>
+
+<!-- Products -->
+<section class="section" id="products">
+    <h2>Engraved Products</h2>
+    <div class="products">
+        <!-- Add all your product cards here, same as before -->
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Send us your file and printing details.</p>
+    <form>
+        <input type="text" placeholder="Your Name" required><br>
+        <input type="email" placeholder="Your Email" required><br>
+        <textarea rows="4" placeholder="Printing Details"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer>
+    © 2026 L.A. Printing Services | All Rights Reserved
+</footer>
+
+<!-- JS -->
+<script>
+let cart = [];
+
+function addToCart(name, price, id) {
+    let quantity = parseInt(document.getElementById(id).value);
+    let existing = cart.find(item => item.name === name);
+    if(existing){
+        existing.quantity += quantity;
+    } else {
+        cart.push({name, price, quantity});
+    }
+    updateCart();
+    showAddedPopup();
+}
+
+function showAddedPopup(){
+    const popup = document.getElementById('addedPopup');
+    popup.style.opacity = '1';
+    popup.style.bottom = '140px';
+    setTimeout(() => {
+        popup.style.opacity = '0';
+        popup.style.bottom = '120px';
+    }, 1500);
+}
+
+function updateCart() {
+    let cartItems = document.getElementById("cart-items");
+    let cartCount = document.getElementById("cart-count");
+    let cartTotal = document.getElementById("cart-total");
+
+    cartItems.innerHTML = "";
+    let total = 0;
+    let count = 0;
+
+    cart.forEach((item, index)=>{
+        total += item.price * item.quantity;
+        count += item.quantity;
+
+        cartItems.innerHTML += `
+            <div>
+                <strong>${item.name}</strong><br>
+                ₱${item.price} x ${item.quantity} = ₱${item.price * item.quantity}<br>
+                <button onclick="removeItem(${index})">Remove</button>
+                <hr>
+            </div>
+        `;
+    });
+
+    cartTotal.textContent = total;
+    cartCount.textContent = count;
+}
+
+function removeItem(index){
+    cart.splice(index,1);
+    updateCart();
+}
+
+function toggleCart(){
+    let modal = document.getElementById("cartModal");
+    modal.style.display = modal.style.display === "block" ? "none" : "block";
+}
+
+function increase(id){
+    let input = document.getElementById(id);
+    input.value = parseInt(input.value) + 1;
+}
+
+function decrease(id){
+    let input = document.getElementById(id);
+    if(parseInt(input.value) > 1){
+        input.value = parseInt(input.value) - 1;
+    }
+}
+</script>
+
+</body>
+</html>
