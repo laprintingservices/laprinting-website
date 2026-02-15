@@ -135,81 +135,173 @@ button {
 </section>
 
 <section class="section" id="products">
-    <h2>Our Products</h2>
+    <h2>Engraved Products</h2>
 
-    <!-- ENGRAVED CATEGORY -->
-    <h3 style="margin-top:40px;">Engraved</h3>
     <div class="services">
 
-      <div class="card">
-    <h4>Engraved Ballpen</h4>
-    <p>Custom name engraving for giveaways and corporate use.</p>
-    <p><strong>₱50</strong></p>
-
-    <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
-        <button onclick="decrease('ballpen')" style="width:30px;">-</button>
-        <input type="text" id="ballpen" value="1" style="width:40px; text-align:center;" readonly>
-        <button onclick="increase('ballpen')" style="width:30px;">+</button>
-    </div>
-
-    <button onclick="addToCart('Engraved Ballpen', 50, 'ballpen')" style="margin-top:10px;">
-        Add to Cart
-    </button>
-</div>
-
+        <!-- Bamboo Pen -->
         <div class="card">
-            <h4>Engraved Keychain</h4>
-            <p>Personalized metal or acrylic keychains.</p>
+            <h4>Bamboo Pen</h4>
+            <p><strong>₱50</strong></p>
+
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
+                <button onclick="decrease('bamboopen')" style="width:30px;">-</button>
+                <input type="text" id="bamboopen" value="1" style="width:40px; text-align:center;" readonly>
+                <button onclick="increase('bamboopen')" style="width:30px;">+</button>
+            </div>
+
+            <button onclick="addToCart('Bamboo Pen', 50, 'bamboopen')" style="margin-top:10px;">
+                Add to Cart
+            </button>
         </div>
 
+        <!-- Notebook -->
         <div class="card">
-            <h4>Engraved Mug</h4>
-            <p>Laser-engraved mugs for gifts and souvenirs.</p>
+            <h4>Notebook</h4>
+            <p><strong>₱120</strong></p>
+
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
+                <button onclick="decrease('notebook')" style="width:30px;">-</button>
+                <input type="text" id="notebook" value="1" style="width:40px; text-align:center;" readonly>
+                <button onclick="increase('notebook')" style="width:30px;">+</button>
+            </div>
+
+            <button onclick="addToCart('Notebook', 120, 'notebook')" style="margin-top:10px;">
+                Add to Cart
+            </button>
         </div>
 
+        <!-- Bamboo Keychain -->
         <div class="card">
-            <h4>Engraved Plaque</h4>
-            <p>Professional award and recognition plaques.</p>
+            <h4>Bamboo Keychain</h4>
+            <p><strong>₱40</strong></p>
+
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
+                <button onclick="decrease('bambookeychain')" style="width:30px;">-</button>
+                <input type="text" id="bambookeychain" value="1" style="width:40px; text-align:center;" readonly>
+                <button onclick="increase('bambookeychain')" style="width:30px;">+</button>
+            </div>
+
+            <button onclick="addToCart('Bamboo Keychain', 40, 'bambookeychain')" style="margin-top:10px;">
+                Add to Cart
+            </button>
         </div>
 
+        <!-- Leather Keychain -->
         <div class="card">
-            <h4>Engraved Name Plate</h4>
-            <p>Office and desk name plates with clean finish.</p>
+            <h4>Leather Keychain</h4>
+            <p><strong>₱80</strong></p>
+
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
+                <button onclick="decrease('leatherkeychain')" style="width:30px;">-</button>
+                <input type="text" id="leatherkeychain" value="1" style="width:40px; text-align:center;" readonly>
+                <button onclick="increase('leatherkeychain')" style="width:30px;">+</button>
+            </div>
+
+            <button onclick="addToCart('Leather Keychain', 80, 'leatherkeychain')" style="margin-top:10px;">
+                Add to Cart
+            </button>
         </div>
 
-    </div>
-
-    <!-- DECALS CATEGORY -->
-    <h3 style="margin-top:60px;">Decals</h3>
-    <div class="services">
-
+        <!-- Cutlery Set -->
         <div class="card">
-            <h4>Vinyl Stickers</h4>
-            <p>Waterproof and durable custom vinyl stickers.</p>
+            <h4>Cutlery Set</h4>
+            <p><strong>₱150</strong></p>
+
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
+                <button onclick="decrease('cutlery')" style="width:30px;">-</button>
+                <input type="text" id="cutlery" value="1" style="width:40px; text-align:center;" readonly>
+                <button onclick="increase('cutlery')" style="width:30px;">+</button>
+            </div>
+
+            <button onclick="addToCart('Cutlery Set', 150, 'cutlery')" style="margin-top:10px;">
+                Add to Cart
+            </button>
         </div>
 
+        <!-- Bottle Opener -->
         <div class="card">
-            <h4>Car Decals</h4>
-            <p>High-quality car branding and sticker decals.</p>
+            <h4>Bottle Opener</h4>
+            <p><strong>₱60</strong></p>
+
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
+                <button onclick="decrease('bottleopener')" style="width:30px;">-</button>
+                <input type="text" id="bottleopener" value="1" style="width:40px; text-align:center;" readonly>
+                <button onclick="increase('bottleopener')" style="width:30px;">+</button>
+            </div>
+
+            <button onclick="addToCart('Bottle Opener', 60, 'bottleopener')" style="margin-top:10px;">
+                Add to Cart
+            </button>
         </div>
 
+        <!-- Bamboo Mirror -->
         <div class="card">
-            <h4>Wall Decals</h4>
-            <p>Custom decorative wall designs.</p>
+            <h4>Bamboo Mirror</h4>
+            <p><strong>₱90</strong></p>
+
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
+                <button onclick="decrease('bamboomirror')" style="width:30px;">-</button>
+                <input type="text" id="bamboomirror" value="1" style="width:40px; text-align:center;" readonly>
+                <button onclick="increase('bamboomirror')" style="width:30px;">+</button>
+            </div>
+
+            <button onclick="addToCart('Bamboo Mirror', 90, 'bamboomirror')" style="margin-top:10px;">
+                Add to Cart
+            </button>
         </div>
 
+        <!-- Mini Folding Mirror -->
         <div class="card">
-            <h4>Window Decals</h4>
-            <p>Perfect for business storefront branding.</p>
+            <h4>Mini Folding Mirror</h4>
+            <p><strong>₱70</strong></p>
+
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
+                <button onclick="decrease('foldingmirror')" style="width:30px;">-</button>
+                <input type="text" id="foldingmirror" value="1" style="width:40px; text-align:center;" readonly>
+                <button onclick="increase('foldingmirror')" style="width:30px;">+</button>
+            </div>
+
+            <button onclick="addToCart('Mini Folding Mirror', 70, 'foldingmirror')" style="margin-top:10px;">
+                Add to Cart
+            </button>
         </div>
 
+        <!-- ID Card Holder -->
         <div class="card">
-            <h4>Logo Decals</h4>
-            <p>Business logo decals for marketing and branding.</p>
+            <h4>ID Card Holder</h4>
+            <p><strong>₱100</strong></p>
+
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
+                <button onclick="decrease('idholder')" style="width:30px;">-</button>
+                <input type="text" id="idholder" value="1" style="width:40px; text-align:center;" readonly>
+                <button onclick="increase('idholder')" style="width:30px;">+</button>
+            </div>
+
+            <button onclick="addToCart('ID Card Holder', 100, 'idholder')" style="margin-top:10px;">
+                Add to Cart
+            </button>
+        </div>
+
+        <!-- Wallet -->
+        <div class="card">
+            <h4>Wallet</h4>
+            <p><strong>₱250</strong></p>
+
+            <div style="display:flex; justify-content:center; align-items:center; margin-top:10px;">
+                <button onclick="decrease('wallet')" style="width:30px;">-</button>
+                <input type="text" id="wallet" value="1" style="width:40px; text-align:center;" readonly>
+                <button onclick="increase('wallet')" style="width:30px;">+</button>
+            </div>
+
+            <button onclick="addToCart('Wallet', 250, 'wallet')" style="margin-top:10px;">
+                Add to Cart
+            </button>
         </div>
 
     </div>
 </section>
+
 
 <section class="section" id="cart">
     <h2>Your Cart</h2>
