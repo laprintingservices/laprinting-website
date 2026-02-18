@@ -359,127 +359,174 @@ footer {
     <div class="products">
 
         <!-- Bamboo Pen -->
-        <div class="card">
-            <h4>Bamboo Pen</h4>
-            <p>Elegant engraved bamboo pen.</p>
-            <div>
-                <button onclick="decrease('bpen')">-</button>
-                <input type="text" id="bpen" value="1" readonly style="width:40px;text-align:center;">
-                <button onclick="increase('bpen')">+</button>
-            </div>
-            <button onclick="addToCart('Bamboo Pen', 99, 'bpen')">Add to Cart</button>
-        </div>
+<div class="card">
+    <img src="images/bamboopen.png" alt="Bamboo Pen">
+    <h4>Bamboo Pen</h4>
+    <p><strong>₱50</strong></p>
 
-        <!-- Notebook -->
-        <div class="card">
-            <h4>Notebook</h4>
-            <p>Custom engraved notebook cover.</p>
-            <div>
-                <button onclick="decrease('notebook')">-</button>
-                <input type="text" id="notebook" value="1" readonly style="width:40px;text-align:center;">
-                <button onclick="increase('notebook')">+</button>
-            </div>
-            <button onclick="addToCart('Notebook', 149, 'notebook')">Add to Cart</button>
-        </div>
-
-        <!-- Bamboo Keychain -->
-        <div class="card">
-            <h4>Bamboo Keychain</h4>
-            <p>Eco-friendly engraved keychain.</p>
-            <div>
-                <button onclick="decrease('bkey')">-</button>
-                <input type="text" id="bkey" value="1" readonly style="width:40px;text-align:center;">
-                <button onclick="increase('bkey')">+</button>
-            </div>
-            <button onclick="addToCart('Bamboo Keychain', 59, 'bkey')">Add to Cart</button>
-        </div>
-
-        <!-- Leather Keychain -->
-        <div class="card">
-            <h4>Leather Keychain</h4>
-            <p>Premium engraved leather keychain.</p>
-            <div>
-                <button onclick="decrease('lkey')">-</button>
-                <input type="text" id="lkey" value="1" readonly style="width:40px;text-align:center;">
-                <button onclick="increase('lkey')">+</button>
-            </div>
-            <button onclick="addToCart('Leather Keychain', 79, 'lkey')">Add to Cart</button>
-        </div>
-
-        <!-- Cutlery Set -->
-        <div class="card">
-            <h4>Cutlery Set</h4>
-            <p>Engraved reusable cutlery set.</p>
-            <div>
-                <button onclick="decrease('cutlery')">-</button>
-                <input type="text" id="cutlery" value="1" readonly style="width:40px;text-align:center;">
-                <button onclick="increase('cutlery')">+</button>
-            </div>
-            <button onclick="addToCart('Cutlery Set', 199, 'cutlery')">Add to Cart</button>
-        </div>
-
-        <!-- Bottle Opener -->
-        <div class="card">
-            <h4>Bottle Opener</h4>
-            <p>Custom engraved metal opener.</p>
-            <div>
-                <button onclick="decrease('opener')">-</button>
-                <input type="text" id="opener" value="1" readonly style="width:40px;text-align:center;">
-                <button onclick="increase('opener')">+</button>
-            </div>
-            <button onclick="addToCart('Bottle Opener', 89, 'opener')">Add to Cart</button>
-        </div>
-
-        <!-- Bamboo Mirror -->
-        <div class="card">
-            <h4>Bamboo Mirror</h4>
-            <p>Stylish engraved bamboo mirror.</p>
-            <div>
-                <button onclick="decrease('bmirror')">-</button>
-                <input type="text" id="bmirror" value="1" readonly style="width:40px;text-align:center;">
-                <button onclick="increase('bmirror')">+</button>
-            </div>
-            <button onclick="addToCart('Bamboo Mirror', 129, 'bmirror')">Add to Cart</button>
-        </div>
-
-        <!-- Mini Folding Mirror -->
-        <div class="card">
-            <h4>Mini Folding Mirror</h4>
-            <p>Compact engraved folding mirror.</p>
-            <div>
-                <button onclick="decrease('mmirror')">-</button>
-                <input type="text" id="mmirror" value="1" readonly style="width:40px;text-align:center;">
-                <button onclick="increase('mmirror')">+</button>
-            </div>
-            <button onclick="addToCart('Mini Folding Mirror', 99, 'mmirror')">Add to Cart</button>
-        </div>
-
-        <!-- ID Card Holder -->
-        <div class="card">
-            <h4>ID Card Holder</h4>
-            <p>Engraved professional ID holder.</p>
-            <div>
-                <button onclick="decrease('idholder')">-</button>
-                <input type="text" id="idholder" value="1" readonly style="width:40px;text-align:center;">
-                <button onclick="increase('idholder')">+</button>
-            </div>
-            <button onclick="addToCart('ID Card Holder', 119, 'idholder')">Add to Cart</button>
-        </div>
-
-        <!-- Wallet -->
-        <div class="card">
-            <h4>Wallet</h4>
-            <p>Premium engraved wallet.</p>
-            <div>
-                <button onclick="decrease('wallet')">-</button>
-                <input type="text" id="wallet" value="1" readonly style="width:40px;text-align:center;">
-                <button onclick="increase('wallet')">+</button>
-            </div>
-            <button onclick="addToCart('Wallet', 299, 'wallet')">Add to Cart</button>
-        </div>
-
+    <div class="qty">
+        <button onclick="decrease('bamboopen')">-</button>
+        <input type="text" id="bamboopen" value="1" readonly>
+        <button onclick="increase('bamboopen')">+</button>
     </div>
-</section>
+
+    <button onclick="addToCart('Bamboo Pen', 50, 'bamboopen')">
+        Add to Cart
+    </button>
+</div>
+
+<!-- Notebook -->
+<div class="card">
+    <img src="images/notebook.png" alt="Notebook">
+    <h4>Notebook</h4>
+    <p><strong>₱120</strong></p>
+
+    <div class="qty">
+        <button onclick="decrease('notebook')">-</button>
+        <input type="text" id="notebook" value="1" readonly>
+        <button onclick="increase('notebook')">+</button>
+    </div>
+
+    <button onclick="addToCart('Notebook', 120, 'notebook')">
+        Add to Cart
+    </button>
+</div>
+
+<!-- Bamboo Keychain -->
+<div class="card">
+    <img src="images/bambookeychain.png" alt="Bamboo Keychain">
+    <h4>Bamboo Keychain</h4>
+    <p><strong>₱40</strong></p>
+
+    <div class="qty">
+        <button onclick="decrease('bambookeychain')">-</button>
+        <input type="text" id="bambookeychain" value="1" readonly>
+        <button onclick="increase('bambookeychain')">+</button>
+    </div>
+
+    <button onclick="addToCart('Bamboo Keychain', 40, 'bambookeychain')">
+        Add to Cart
+    </button>
+</div>
+
+<!-- Leather Keychain -->
+<div class="card">
+    <img src="images/leatherkeychain.png" alt="Leather Keychain">
+    <h4>Leather Keychain</h4>
+    <p><strong>₱60</strong></p>
+
+    <div class="qty">
+        <button onclick="decrease('leatherkeychain')">-</button>
+        <input type="text" id="leatherkeychain" value="1" readonly>
+        <button onclick="increase('leatherkeychain')">+</button>
+    </div>
+
+    <button onclick="addToCart('Leather Keychain', 60, 'leatherkeychain')">
+        Add to Cart
+    </button>
+</div>
+
+<!-- Cutlery Set -->
+<div class="card">
+    <img src="images/cutlery.png" alt="Cutlery Set">
+    <h4>Cutlery Set</h4>
+    <p><strong>₱150</strong></p>
+
+    <div class="qty">
+        <button onclick="decrease('cutlery')">-</button>
+        <input type="text" id="cutlery" value="1" readonly>
+        <button onclick="increase('cutlery')">+</button>
+    </div>
+
+    <button onclick="addToCart('Cutlery Set', 150, 'cutlery')">
+        Add to Cart
+    </button>
+</div>
+
+<!-- Bottle Opener -->
+<div class="card">
+    <img src="images/opener.png" alt="Bottle Opener">
+    <h4>Bottle Opener</h4>
+    <p><strong>₱35</strong></p>
+
+    <div class="qty">
+        <button onclick="decrease('opener')">-</button>
+        <input type="text" id="opener" value="1" readonly>
+        <button onclick="increase('opener')">+</button>
+    </div>
+
+    <button onclick="addToCart('Bottle Opener', 35, 'opener')">
+        Add to Cart
+    </button>
+</div>
+
+<!-- Desk Mirror -->
+<div class="card">
+    <img src="images/deskmirror.png" alt="Desk Mirror">
+    <h4>Desk Mirror</h4>
+    <p><strong>₱80</strong></p>
+
+    <div class="qty">
+        <button onclick="decrease('deskmirror')">-</button>
+        <input type="text" id="deskmirror" value="1" readonly>
+        <button onclick="increase('deskmirror')">+</button>
+    </div>
+
+    <button onclick="addToCart('Desk Mirror', 80, 'deskmirror')">
+        Add to Cart
+    </button>
+</div>
+
+<!-- Mini Folding Mirror -->
+<div class="card">
+    <img src="images/minimirror.png" alt="Mini Folding Mirror">
+    <h4>Mini Folding Mirror</h4>
+    <p><strong>₱55</strong></p>
+
+    <div class="qty">
+        <button onclick="decrease('minimirror')">-</button>
+        <input type="text" id="minimirror" value="1" readonly>
+        <button onclick="increase('minimirror')">+</button>
+    </div>
+
+    <button onclick="addToCart('Mini Folding Mirror', 55, 'minimirror')">
+        Add to Cart
+    </button>
+</div>
+
+<!-- ID Card Holder -->
+<div class="card">
+    <img src="images/idholder.png" alt="ID Card Holder">
+    <h4>ID Card Holder</h4>
+    <p><strong>₱45</strong></p>
+
+    <div class="qty">
+        <button onclick="decrease('idholder')">-</button>
+        <input type="text" id="idholder" value="1" readonly>
+        <button onclick="increase('idholder')">+</button>
+    </div>
+
+    <button onclick="addToCart('ID Card Holder', 45, 'idholder')">
+        Add to Cart
+    </button>
+</div>
+
+<!-- Wallet -->
+<div class="card">
+    <img src="images/wallet.png" alt="Wallet">
+    <h4>Wallet</h4>
+    <p><strong>₱200</strong></p>
+
+    <div class="qty">
+        <button onclick="decrease('wallet')">-</button>
+        <input type="text" id="wallet" value="1" readonly>
+        <button onclick="increase('wallet')">+</button>
+    </div>
+
+    <button onclick="addToCart('Wallet', 200, 'wallet')">
+        Add to Cart
+    </button>
+</div>
 
 
 <!-- CONTACT SECTION -->
@@ -504,6 +551,14 @@ footer {
 
 <!-- JAVASCRIPT -->
 <script>
+    .card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
 let cart = [];
 
 function addToCart(name, price, id) {
