@@ -727,13 +727,9 @@ function enterSite() {
     setTimeout(() => {
         welcome.style.display = "none";
         main.style.display = "block";
-        setTimeout(() => {
-            main.classList.add("fade-in");
-        }, 10);
+        setTimeout(() => main.classList.add("fade-in"), 50);
     }, 600);
 }
-
-
 
 let cart = [];
 
