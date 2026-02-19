@@ -361,6 +361,21 @@ footer {
 .card > button:hover {
     background: #333;
 }
+    /* Smooth fade transition */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+#main-site {
+    opacity: 0;
+}
+
 
 </style>
 </head>
@@ -622,9 +637,26 @@ footer {
 <script>
 
 function enterSite() {
-    document.getElementById("welcome-screen").style.display = "none";
-    document.getElementById("main-site").style.display = "block";
+    const welcome = document.getElementById("welcome-screen");
+    const main = document.getElementById("main-site");
+
+    // Fade out welcome
+    welcome.classList.add("fade-out");
+
+    setTimeout(() => {
+        welcome.style.display = "none";
+
+        // Show main site
+        main.style.display = "block";
+
+        // Trigger fade in
+        setTimeout(() => {
+            main.classList.add("fade-in");
+        }, 50);
+
+    }, 600);
 }
+
 
 let cart = [];
 
