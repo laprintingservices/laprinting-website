@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-/* ===== GENERAL ===== */
+/* ===== GENERAL ===== */ CSS ITO
     /* WELCOME SCREEN */
 #welcome-screen {
     position: fixed;
@@ -66,6 +66,39 @@ a {
     text-decoration: none;
     color: inherit;
 }
+    .checkout-modal {
+    position: fixed;
+    top:0; left:0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.checkout-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.checkout-content h2 {
+    margin-top:0;
+}
+
+.checkout-content select, .checkout-content button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 80%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
 
 
 /* ===== HEADER ===== */
@@ -384,6 +417,28 @@ footer {
 #main-site {
     opacity: 0;
 }
+<!-- CHECKOUT MODAL -->
+<div class="checkout-modal" id="checkoutModal" style="display:none;">
+  <div class="checkout-content">
+    <h2>Checkout</h2>
+
+    <div id="checkout-items"></div>
+    <h3>Total: ₱<span id="checkout-total">0</span></h3>
+
+    <label for="payment">Mode of Payment:</label>
+    <select id="payment" required>
+      <option value="">Select</option>
+      <option value="Cash">Cash on Delivery</option>
+      <option value="GCash">GCash</option>
+      <option value="Bank">Bank Transfer</option>
+    </select>
+
+    <div id="payment-details" style="margin-top:10px;"></div>
+
+    <button onclick="confirmOrder()">Confirm Order</button>
+    <button onclick="toggleCheckout()">Cancel</button>
+  </div>
+</div>
 
 
 </style>
@@ -415,6 +470,7 @@ footer {
         <div id="cart-items"></div>
         <h4>Total: ₱<span id="cart-total">0</span></h4>
         <button onclick="toggleCart()">Close</button>
+        <button onclick="toggleCheckout()">Proceed to Checkout</button>
     </div>
 </div>
 
@@ -736,6 +792,49 @@ function decrease(id){
     if(parseInt(input.value) > 1){
         input.value = parseInt(input.value) - 1;
     }
+}
+function toggleCheckout() {
+    const modal = document.getElementById("checkoutModal");
+    modal.style.display = modal.style.display === "block" ? "none" : "block";
+
+    if(modal.style.display === "block"){
+        // populate items and total
+        let container = document.getElementById("checkout-items");
+        let totalEl = document.getElementById("checkout-total");
+        let total = 0;
+        container.innerHTML = "";
+
+        cart.forEach(item => {
+            container.innerHTML += `<p>${item.name} x ${item.quantity} = ₱${item.price * item.quantity}</p>`;
+            total += item.price * item.quantity;
+        });
+        totalEl.textContent = total;
+    }
+}
+
+// Update payment details dynamically
+document.getElementById("payment").addEventListener("change", function(){
+    let val = this.value;
+    let details = document.getElementById("payment-details");
+    if(val === "GCash") {
+        details.innerHTML = "Send to GCash number: 09123456789";
+    } else if(val === "Bank") {
+        details.innerHTML = "Bank Account: 1234-5678-9012 (Bank Name)";
+    } else {
+        details.innerHTML = "";
+    }
+});
+
+function confirmOrder() {
+    const payment = document.getElementById("payment").value;
+    if(!payment){
+        alert("Please select a mode of payment");
+        return;
+    }
+    alert(`Order confirmed! Mode of payment: ${payment}`);
+    cart = []; // clear cart
+    updateCart(); 
+    toggleCheckout();
 }
 
 </script>
