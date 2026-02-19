@@ -15,40 +15,51 @@
     position: fixed; 
     width: 100%; 
     height: 100vh; 
-    background: black; 
-    color: white; 
+    background: linear-gradient(135deg, #ffcc00, #ffffff); /* clean gradient instead of black */
+    color: #333; /* dark text for readability */
     display: flex; 
     justify-content: center; 
     align-items: center; 
     text-align: center; 
     z-index: 9999; 
+    flex-direction: column;
+    font-family: 'League Spartan', sans-serif;
+    transition: opacity 0.6s ease;
+}
+
+.welcome-content h1 { 
+    font-size: 36px; 
+    margin-bottom: 10px; 
+}
+
+.welcome-content h2 { 
+    font-size: 60px; 
+    margin-bottom: 20px; 
+    color: #ff9900; /* accent color for title */
+}
+
+.welcome-content p { 
+    margin-bottom: 30px; 
+    font-size: 20px; 
+    max-width: 500px;
+    color: #555;
 } 
-    .welcome-content h1 { 
-        font-size: 28px; 
-        margin-bottom: 10px; 
-    } 
-    .welcome-content h2 { 
-        font-size: 40px; 
-        margin-bottom: 15px; 
-    } 
-    .welcome-content p { 
-        margin-bottom: 25px; 
-        font-size: 18px; 
-    } 
-    .welcome-content button { 
-        padding: 12px 30px; 
-        font-size: 16px; 
-        background: white; 
-        color: black; 
-        border: none; 
-        cursor: pointer; 
-        border-radius: 30px; 
-        font-weight: bold; 
-        transition: 0.3s; 
-    } 
-    .welcome-content button:hover { 
-    background: #ddd;
-     }
+
+.welcome-content button { 
+    padding: 15px 40px; 
+    font-size: 18px; 
+    background: #333; /* dark button for contrast */
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    border-radius: 30px; 
+    font-weight: bold; 
+    transition: 0.3s; 
+} 
+
+.welcome-content button:hover { 
+    background: #555;
+}
     
 body {
     margin: 0;
