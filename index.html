@@ -11,56 +11,34 @@
 <style>
 /* ===== GENERAL ===== */ CSS ITO
     /* WELCOME SCREEN */
-#welcome-screen { 
-    position: fixed; 
-    width: 100%; 
-    height: 100vh; 
-    background: linear-gradient(135deg, #ffcc00, #ffffff); /* clean gradient instead of black */
-    color: #333; /* dark text for readability */
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    text-align: center; 
-    z-index: 9999; 
-    flex-direction: column;
-    font-family: 'League Spartan', sans-serif;
+    #welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
     transition: opacity 0.6s ease;
 }
 
-.welcome-content h1 { 
-    font-size: 36px; 
-    margin-bottom: 10px; 
+#welcome-screen.fade-out {
+    opacity: 0;
+    pointer-events: none; /* hindi ma-click habang nagfa-fade */
 }
 
-.welcome-content h2 { 
-    font-size: 60px; 
-    margin-bottom: 20px; 
-    color: #ff9900; /* accent color for title */
+#main-site {
+    opacity: 0;
+    transition: opacity 0.6s ease;
 }
 
-.welcome-content p { 
-    margin-bottom: 30px; 
-    font-size: 20px; 
-    max-width: 500px;
-    color: #555;
-} 
-
-.welcome-content button { 
-    padding: 15px 40px; 
-    font-size: 18px; 
-    background: #333; /* dark button for contrast */
-    color: white; 
-    border: none; 
-    cursor: pointer; 
-    border-radius: 30px; 
-    font-weight: bold; 
-    transition: 0.3s; 
-} 
-
-.welcome-content button:hover { 
-    background: #555;
+#main-site.fade-in {
+    opacity: 1;
 }
-    
+
 body {
     margin: 0;
     font-family: 'League Spartan', sans-serif;
@@ -532,6 +510,7 @@ footer {
     </div>
 </div>
 
+
 <!-- HEADER -->
 <header>
     <div class="header-container">
@@ -758,25 +737,19 @@ footer {
 
 <!-- JAVASCRIPT -->
 <script>
-
 function enterSite() {
     const welcome = document.getElementById("welcome-screen");
-    const main = document.getElementById("main-site");
+    const mainSite = document.getElementById("main-site");
 
-    // fade out
-    welcome.style.opacity = "0";
+    // Fade out welcome screen
+    welcome.classList.add("fade-out");
 
+    // Pagkatapos ng transition (0.6s), ipakita ang main site
     setTimeout(() => {
-        welcome.style.display = "none";
-        main.style.display = "block";
-
-        setTimeout(() => {
-            main.classList.add("fade-in");
-        }, 10);
-
-    }, 600);
+        mainSite.style.display = "block";
+        mainSite.classList.add("fade-in");
+    }, 600); // match sa CSS transition
 }
-
 
 let cart = [];
 
