@@ -22,7 +22,18 @@
     align-items: center;
     text-align: center;
     z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.6s ease;
 }
+
+#main-site {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+#main-site.fade-in {
+    opacity: 1;
+}
+
 
 .welcome-content h1 {
     font-size: 28px;
@@ -417,6 +428,20 @@ footer {
 #main-site {
     opacity: 0;
 }
+
+
+</style>
+</head>
+<body>
+<!-- WELCOME SCREEN -->
+<div id="welcome-screen">
+    <div class="welcome-content">
+        <h1>Welcome to</h1>
+        <h2>L.A. Printing Engraving Services</h2>
+        <p>Your trusted partner for quality engraving products.</p>
+        <button onclick="enterSite()">ORDER NOW</button>
+    </div>
+</div>
 <!-- CHECKOUT MODAL -->
 <div class="checkout-modal" id="checkoutModal" style="display:none;">
   <div class="checkout-content">
@@ -439,21 +464,6 @@ footer {
     <button onclick="toggleCheckout()">Cancel</button>
   </div>
 </div>
-
-
-</style>
-</head>
-<body>
-<!-- WELCOME SCREEN -->
-<div id="welcome-screen">
-    <div class="welcome-content">
-        <h1>Welcome to</h1>
-        <h2>L.A. Printing Engraving Services</h2>
-        <p>Your trusted partner for quality engraving products.</p>
-        <button onclick="enterSite()">ORDER NOW</button>
-    </div>
-</div>
-
 <!-- MAIN SITE (Hidden first) -->
 <div id="main-site" style="display:none;">
 
@@ -705,20 +715,17 @@ function enterSite() {
     const welcome = document.getElementById("welcome-screen");
     const main = document.getElementById("main-site");
 
-    // Fade out welcome
     welcome.style.opacity = "0";
 
     setTimeout(() => {
         welcome.style.display = "none";
         main.style.display = "block";
-
-        // Small delay para ma-trigger transition
         setTimeout(() => {
             main.classList.add("fade-in");
         }, 10);
-
     }, 600);
 }
+
 
 
 let cart = [];
