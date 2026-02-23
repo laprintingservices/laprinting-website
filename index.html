@@ -6,73 +6,7 @@
 <title>LA Printing Services</title>
 
 <style>
-    header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 40px;
-    background:#000;
-    color:#fff;
-}
-    .welcome{
-    position:relative;
-    z-index:10;
-}
-
-header{
-    position:relative;
-    z-index:1;
-}
-
-.header-left{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.header-logo{
-    height:65px;
-}
-    
-    .header-text{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.brand-title{
-    font-weight:900;
-    font-size:26px;
-    letter-spacing:2px;
-    line-height:1.1;
-}
-
-.brand-sub{
-    font-size:20px;
-    letter-spacing:3px;
-    line-height:1.1;
-}
-
-.nav-menu{
-    display:flex;
-    align-items:center;
-    gap:30px;
-}
-
-.nav-menu a{
-    color:#fff;
-    text-decoration:none;
-    font-size:14px;
-    letter-spacing:1px;
-}
-
-.nav-menu a:hover{
-    opacity:0.7;
-}
-
-.cart-icon{
-    cursor:pointer;
-}
+/* ===== GENERAL ===== */
 body{
     margin:0;
     font-family: 'Segoe UI', sans-serif;
@@ -82,18 +16,9 @@ body{
 }
 
 h1,h2,h3,h4{margin:5px 0;}
-button{
-    background:#000;
-    color:#fff;
-    border:none;
-    padding:8px 15px;
-    cursor:pointer;
-    transition:0.3s;
-}
-button:hover{opacity:0.8;}
+button{cursor:pointer; transition:0.3s;}
 
-.fade-out{opacity:0;}
-
+/* ===== WELCOME PAGE ===== */
 .welcome{
     height:100vh;
     display:flex;
@@ -105,133 +30,93 @@ button:hover{opacity:0.8;}
     gap:15px;
     padding:20px;
 }
-
-.welcome-title{
-    font-size:48px;
-    font-weight:900;
-    letter-spacing:2px;
-    margin:0;
-}
-
-.welcome-tagline{
-    font-size:24px;
-    font-weight:600;
-    margin:0;
-    letter-spacing:1px;
-}
-
-.welcome-subtext{
-    font-size:16px;
-    opacity:0.7;
-    margin:0;
-}
-
+.welcome-title{font-size:48px; font-weight:900; letter-spacing:2px;}
+.welcome-tagline{font-size:24px; font-weight:600; letter-spacing:1px;}
+.welcome-subtext{font-size:16px; opacity:0.7;}
 .welcome-btn{
     margin-top:25px;
     padding:12px 30px;
     font-size:16px;
     font-weight:600;
     border:none;
-    border-radius:15px; /* curved corners */
+    border-radius:15px;
     background:#000;
     color:#fff;
-    cursor:pointer;
-    transition:0.3s;
 }
-
 .welcome-btn:hover{
     background:#fff;
     color:#000;
     border:1px solid #000;
 }
 
+/* ===== HEADER ===== */
 header{
     display:none;
     justify-content:space-between;
     align-items:center;
-    padding:20px;
-    border-bottom:1px solid #000;
+    padding:20px 40px;
+    background:#000;
+    color:#fff;
 }
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+.header-logo{height:65px;}
+.header-text{display:flex; flex-direction:column; justify-content:center;}
+.brand-title{font-weight:900; font-size:26px; line-height:1.1; letter-spacing:2px;}
+.brand-sub{font-size:20px; line-height:1.1; letter-spacing:3px;}
+.nav-menu{display:flex; align-items:center; gap:30px;}
+.nav-menu a{color:#fff; text-decoration:none; font-size:14px; letter-spacing:1px;}
+.nav-menu a:hover{opacity:0.7;}
 
+/* ===== HOME SECTION ===== */
+.home-section{
+    padding:60px 40px;
+    text-align:center;
+    background:#fff;
+}
+.home-tagline{font-size:28px; font-weight:700; letter-spacing:2px; margin-bottom:15px;}
+.home-subtext{font-size:16px; opacity:0.7; margin-bottom:40px;}
+.home-history{max-width:800px; margin:0 auto; text-align:center;}
+.home-history h3{font-size:22px; font-weight:700; margin-bottom:15px;}
+.home-history p{font-size:16px; line-height:1.6; opacity:0.8;}
+
+/* ===== PRODUCTS ===== */
+.products-section{padding:60px 40px; text-align:center;}
+.section-title{font-size:28px; font-weight:900; letter-spacing:4px; margin-bottom:40px;}
+
+.products-wrapper{
+    display:flex;
+    justify-content:center;
+}
 .products{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* bawat card min 250px, max 1fr */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
     gap:40px;
-    justify-content:center; /* center last row kung hindi full */
-    padding-bottom:40px;
 }
 
 .product{
     border:1px solid #000;
-    border-radius:18px; /* curved corners */
+    border-radius:18px;
     padding:20px;
     text-align:center;
     background:#fff;
     transition:0.3s;
 }
-
 .product:hover{
     box-shadow:0 8px 20px rgba(0,0,0,0.08);
     transform:translateY(-4px);
 }
-
 .product img{
     width:100%;
     height:160px;
     object-fit:contain;
     margin-bottom:15px;
 }
-.products-wrapper {
-    display: flex;
-    justify-content: center; /* center ang whole grid */
-}
 
-.products {
-    display: inline-grid;  /* inline-grid para ma-center yung grid mismo */
-    grid-template-columns: repeat(auto-fill, 250px); /* fixed width bawat card */
-    gap: 40px;
-}
-
-.qty{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin-top:10px;
-}
-
-.cart-icon{cursor:pointer;font-size:20px;}
-
-.cart-panel{
-    position:fixed;
-    right:-400px;
-    top:0;
-    width:350px;
-    height:100%;
-    background:#fff;
-    border-left:1px solid #000;
-    padding:20px;
-    overflow:auto;
-    transition:0.4s;
-}
-.cart-panel.active{right:0;}
-
-.checkout-page, .admin-page{
-    display:none;
-    padding:40px;
-}
-
-input, select{
-    width:100%;
-    padding:8px;
-    margin-bottom:10px;
-    border:1px solid #000;
-}
-
-.admin-btn{
-    position:fixed;
-    bottom:20px;
-    left:20px;
-}
+/* ===== QUANTITY & ADD TO CART ===== */
 .cart-controls{
     display:flex;
     justify-content:center;
@@ -239,7 +124,20 @@ input, select{
     gap:10px;
     margin-top:10px;
 }
-
+.circle-btn{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:1px solid #000;
+    background:#000;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+}
+.circle-btn:hover{background:#fff; color:#000;}
+.qty-number{font-weight:bold; font-size:18px; width:30px; text-align:center;}
 .add-btn{
     width:100%;
     padding:10px 0;
@@ -248,113 +146,10 @@ input, select{
     background:#000;
     color:#fff;
     border:1px solid #000;
-    cursor:pointer;
-    transition:0.3s;
 }
+.add-btn:hover{background:#fff; color:#000;}
 
-.add-btn:hover{
-    background:#fff;
-    color:#000;
-}
-
-.cart-center{
-    text-align:center;
-}
-
-.add-label{
-    font-size:10px;
-    letter-spacing:1px;
-}
-
-.qty-number{
-    font-weight:bold;
-    font-size:16px;
-}
-.add-btn{
-    width:100%;
-    padding:10px 0;
-    margin-top:10px;
-    background:#000;
-    color:#fff;
-    border:1px solid #000;
-    border-radius:12px; /* curved corners lang */
-    letter-spacing:1px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.add-btn:hover{
-    background:#fff;
-    color:#000;
-}
-
-.qty-number{
-    font-weight:bold;
-    font-size:18px;
-    width:30px;
-    text-align:center;
-}
-    .products-section{
-    padding:60px 40px;
-    text-align:center;
-}
-
-.section-title{
-    font-size:28px;
-    letter-spacing:4px;
-    margin-bottom:40px;
-    font-weight:900;
-}
-    
-    #homeSection{
-    text-align:center;
-    padding:60px 20px;
-    font-size:22px;
-    letter-spacing:2px;
-    font-weight:600;
-}
-    
-.footer{
-    background:#000;
-    color:#fff;
-    text-align:center;
-    padding:30px 0;
-    margin-top:60px;
-    font-size:14px;
-}
-
-.footer h3{
-    letter-spacing:2px;
-    margin-bottom:10px;
-}
-
-.footer p{
-    font-size:14px;
-    opacity:0.8;
-}
-
-.footer-links{
-    margin:20px 0;
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    font-size:13px;
-    letter-spacing:1px;
-}
-
-.footer-links span{
-    cursor:pointer;
-}
-
-.footer-links span:hover{
-    opacity:0.6;
-}
-
-.copyright{
-    margin-top:20px;
-    font-size:12px;
-    opacity:0.6;
-}
+/* ===== FLOATING CART ===== */
 .floating-cart{
     position:fixed;
     bottom:25px;
@@ -371,54 +166,14 @@ input, select{
     cursor:pointer;
     box-shadow:0 6px 16px rgba(0,0,0,0.2);
     z-index:1000;
-    transition:0.3s;
 }
+.floating-cart:hover{transform:scale(1.1);}
 
-.floating-cart:hover{
-    transform:scale(1.1);
-}
-    .home-section{
-    padding:60px 40px;
-    text-align:center;
-    background:#fff;
-}
-
-.home-tagline{
-    font-size:28px;
-    font-weight:700;
-    letter-spacing:2px;
-    margin-bottom:15px;
-}
-
-.home-subtext{
-    font-size:16px;
-    opacity:0.7;
-    margin-bottom:40px;
-}
-
-.home-history{
-    max-width:800px;
-    margin:0 auto;
-    text-align:center;
-}
-
-.home-history h3{
-    font-size:22px;
-    font-weight:700;
-    margin-bottom:15px;
-}
-
-.home-history p{
-    font-size:16px;
-    line-height:1.6;
-    opacity:0.8;
-}
-
-/* Cart Panel */
+/* ===== CART PANEL ===== */
 .cart-panel{
     position:fixed;
-    right:-360px; /* hidden by default */
-    bottom:80px;   /* just above floating icon */
+    right:-360px;
+    bottom:80px;
     width:300px;
     max-height:400px;
     background:#fff;
@@ -429,9 +184,16 @@ input, select{
     transition:0.4s;
     border-radius:15px;
 }
+.cart-panel.active{right:25px;}
 
-.cart-panel.active{
-    right:25px; /* aligned with floating icon */
+/* ===== FOOTER ===== */
+.footer{
+    background:#000;
+    color:#fff;
+    text-align:center;
+    padding:30px 0;
+    font-size:14px;
+    margin-top:60px;
 }
 </style>
 </head>
@@ -447,8 +209,7 @@ input, select{
 </div>
 
 <!-- HEADER -->
-<header id="mainHeader" style="display:none;">
-
+<header id="mainHeader">
     <div class="header-left">
         <img src="logo.png" class="header-logo">
         <div class="header-text">
@@ -456,21 +217,17 @@ input, select{
             <div class="brand-sub">Engraving Services</div>
         </div>
     </div>
-
     <nav class="nav-menu">
         <a href="#" onclick="showHome()">HOME</a>
         <a href="#" onclick="showProducts()">PRODUCTS</a>
         <a href="#" onclick="showContact()">CONTACT</a>
     </nav>
-
 </header>
-    <section id="homeSection">
-    <h2>Premium Engraving & Printing Solutions</h2>
-        <p class="home-subtext">Your trusted partner for custom engraved products.</p>
-</section>
-    
-<!-- HOME / HISTORY -->
-<section id="homeSection" class="home-section">
+
+<!-- HOME -->
+<section class="home-section" id="homeSection">
+    <h2 class="home-tagline">Premium Engraving & Printing Solutions</h2>
+    <p class="home-subtext">Your trusted partner for custom engraved products.</p>
     <div class="home-history">
         <h3>Our Story</h3>
         <p>
@@ -479,7 +236,7 @@ input, select{
         </p>
     </div>
 </section>
-    
+
 <!-- PRODUCTS -->
 <section class="products-section" id="productsSection">
     <h2 class="section-title">ENGRAVED PRODUCTS</h2>
@@ -488,20 +245,21 @@ input, select{
     </div>
 </section>
 
-<!-- CART -->
+<!-- CART PANEL -->
 <div class="cart-panel" id="cartPanel">
     <h3>Your Cart</h3>
     <div id="cartItems"></div>
     <h4>Total: ₱<span id="totalPrice">0</span></h4>
     <button onclick="goCheckout()">Checkout</button>
 </div>
-    
-    <div class="contact-section" id="contactSection" style="display:none; padding:60px; text-align:center;">
+
+<!-- CONTACT -->
+<section class="contact-section" id="contactSection" style="display:none; padding:60px; text-align:center;">
     <h2>Contact Us</h2>
     <p>📍 Poblacion Itaas</p>
     <p>📞 09XXXXXXXXX</p>
     <p>📧 laprintingservices@email.com</p>
-</div>
+</section>
 
 <!-- CHECKOUT -->
 <div class="checkout-page" id="checkoutPage">
@@ -509,28 +267,29 @@ input, select{
     <input type="text" id="custName" placeholder="Full Name">
     <input type="text" id="custAddress" placeholder="Address">
     <input type="text" id="custContact" placeholder="Contact Number">
-    
     <select id="paymentMethod">
         <option value="GCash">GCash</option>
         <option value="Cash on Pickup">Cash on Pickup</option>
     </select>
-
     <div id="gcashInfo">
         <p>Send payment to: <b>09XXXXXXXXX</b></p>
         <input type="file">
     </div>
-
     <button onclick="placeOrder()">Place Order</button>
 </div>
 
-<!-- ADMIN -->
-<div class="admin-page" id="adminPage">
-    <h2>Admin Panel</h2>
-    <div id="ordersList"></div>
+<!-- FOOTER -->
+<footer class="footer">
+    ©2026 LA Printing Services
+</footer>
+
+<!-- FLOATING CART -->
+<div class="floating-cart" onclick="toggleCart()">
+    🛒 <span id="cartCount">0</span>
 </div>
 
-
 <script>
+// ===== PRODUCTS DATA =====
 const products = [
 {name:"Bamboo Pen", img:"bamboopen.png", price:35},
 {name:"Notebook", img:"notebook.png", price:120},
@@ -548,18 +307,16 @@ let cart = {};
 let tempQty = {};
 let total = 0;
 
+// ===== FUNCTIONS =====
 function enterSite(){
-    document.body.classList.add("fade-out");
-    setTimeout(()=>{
-        document.getElementById("welcome").style.display="none";
-        document.getElementById("mainHeader").style.display="flex";
-        document.getElementById("productList").style.display="grid";
-        document.body.classList.remove("fade-out");
-    },600);
+    document.getElementById("welcome").style.display="none";
+    document.getElementById("mainHeader").style.display="flex";
+    document.getElementById("productList").style.display="grid";
 }
 
 const productList = document.getElementById("productList");
 
+// Render products
 products.forEach(p=>{
     const div=document.createElement("div");
     div.className="product";
@@ -578,42 +335,35 @@ products.forEach(p=>{
             ADD TO CART
         </button>
     `;
-
     productList.appendChild(div);
 });
-    
+
+// Quantity & Add to Cart
+function updateQty(name,change){
+    if(!tempQty[name]) tempQty[name]=0;
+    tempQty[name]+=change;
+    if(tempQty[name]<0) tempQty[name]=0;
+    document.getElementById(name).innerText=tempQty[name];
+}
 function addToCart(name){
-    if(!tempQty[name] || tempQty[name] === 0){
+    if(!tempQty[name] || tempQty[name]===0){
         alert("Please select quantity first.");
         return;
     }
-
     if(!cart[name]) cart[name]=0;
-
     cart[name]+=tempQty[name];
     tempQty[name]=0;
-
     document.getElementById(name).innerText=0;
-
     renderCart();
     toggleCart();
 }
 
-function updateQty(name,change){
-    if(!tempQty[name]) tempQty[name]=0;
-
-    tempQty[name]+=change;
-    if(tempQty[name]<0) tempQty[name]=0;
-
-    document.getElementById(name).innerText=tempQty[name];
-}
-
+// Render cart
 function renderCart(){
     const cartItems=document.getElementById("cartItems");
     cartItems.innerHTML="";
     total=0;
     let count=0;
-
     for(let item in cart){
         if(cart[item]>0){
             const product=products.find(p=>p.name===item);
@@ -623,79 +373,48 @@ function renderCart(){
             cartItems.innerHTML+=`<p>${item} x ${cart[item]} = ₱${itemTotal}</p>`;
         }
     }
-
     document.getElementById("totalPrice").innerText=total;
     document.getElementById("cartCount").innerText=count;
 }
 
+// Cart panel toggle
 function toggleCart(){
     document.getElementById("cartPanel").classList.toggle("active");
 }
 
+// Checkout
 function goCheckout(){
     document.getElementById("checkoutPage").style.display="block";
     document.getElementById("cartPanel").classList.remove("active");
 }
-
 function placeOrder(){
     const name=document.getElementById("custName").value;
     const address=document.getElementById("custAddress").value;
     const contact=document.getElementById("custContact").value;
     const payment=document.getElementById("paymentMethod").value;
-
-    const order={
-        name,address,contact,payment,cart,total
-    };
-
+    const order={name,address,contact,payment,cart,total};
     let orders=JSON.parse(localStorage.getItem("orders"))||[];
     orders.push(order);
     localStorage.setItem("orders",JSON.stringify(orders));
-
     alert("Order Placed Successfully!");
     location.reload();
 }
 
-function openAdmin(){
-    document.getElementById("adminPage").style.display="block";
-    const orders=JSON.parse(localStorage.getItem("orders"))||[];
-    const container=document.getElementById("ordersList");
-    container.innerHTML="";
-    orders.forEach((o,i)=>{
-        container.innerHTML+=`
-            <hr>
-            <p><b>Order #${i+1}</b></p>
-            <p>Name: ${o.name}</p>
-            <p>Total: ₱${o.total}</p>
-        `;
-    });
-}
+// Navigation
 function showHome(){
     document.getElementById("homeSection").style.display="block";
     document.getElementById("productsSection").style.display="block";
     document.getElementById("contactSection").style.display="none";
-
-    // Scroll to home section smoothly
-    document.getElementById("homeSection").scrollIntoView({behavior:"smooth"});
 }
-
 function showProducts(){
     document.getElementById("productList").style.display="grid";
     document.getElementById("contactSection").style.display="none";
 }
-
 function showContact(){
     document.getElementById("productList").style.display="none";
     document.getElementById("contactSection").style.display="block";
 }
 </script>
-    
-<footer class="footer">
-    ©2026 LA Printing Services
-</footer>
 
-        <div class="floating-cart" onclick="toggleCart()">
-    🛒 <span id="cartCount">0</span>
-</div>
-    
 </body>
 </html>
