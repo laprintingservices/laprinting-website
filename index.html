@@ -110,6 +110,34 @@ header nav a:hover { text-decoration:underline; }
 
 .fade-out { opacity:0; transition:opacity 1s ease; }
 .fade-in { opacity:1; transition:opacity 1s ease; }
+
+    /* Floating Message Sent Popup */
+#messageSentPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background-color: #007bff; /* blue */
+    color: #fff;
+    padding: 20px 40px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 300;
+    pointer-events: none;
+    text-align: center;
+}
+#messageSentPopup.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+#messageSentPopup.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+    
 </style>
 </head>
 <body class="welcome">
@@ -122,13 +150,35 @@ header nav a:hover { text-decoration:underline; }
     <button id="orderNow">Order Now</button>
 </div>
     
-<!-- HOME SECTION -->
+<!-- SHOP PAGE -->
+<div id="shopPage" style="display:none;">
+
+<header>
+  <div class="logo-title">
+    <img src="logo.png" class="logo" alt="Logo">
+    <div class="title-container">
+        <h1>LA Printing Services</h1>
+        <h3>Engraving Services</h3>
+    </div>
+  </div>
+  <nav>
+      <a href="#homeSection">HOME</a>
+      <a href="#productsSection">PRODUCTS</a>
+      <a href="#contactSection">CONTACT</a>
+  </nav>
+</header>
+
+<!-- HOME SECTION (after header) -->
 <section id="homeSection" style="padding:50px 20px; text-align:center;">
     <h2>Welcome to LA Printing Services</h2>
     <p>Precision. Elegant. Lasting Engravings. Your trusted partner for custom engraved products.</p>
+    <button id="shopNowBtn" style="background:#000; color:#fff; padding:12px 25px; border:none; border-radius:12px; cursor:pointer; font-size:16px;">Shop Now</button>
 </section>
 
-<!-- CONTACT SECTION -->
+<!-- PRODUCTS SECTION -->
+<main id="productsSection" class="products-container"></main>
+
+<!-- CONTACT SECTION (after products) -->
 <section id="contactSection" style="padding:50px 20px; text-align:center; background:#f5f5f5;">
     <h2>Contact Us</h2>
     <form style="max-width:400px; margin:0 auto; text-align:left;">
@@ -144,16 +194,44 @@ header nav a:hover { text-decoration:underline; }
         <button type="button" onclick="submitContact()" style="background:#000; color:#fff; padding:10px 20px; border:none; border-radius:12px; cursor:pointer;">Send Message</button>
     </form>
 </section>
-    
-<!-- SHOP PAGE -->
-<div id="shopPage" style="display:none;">
-<header>
-  <div class="logo-title">
-    <img src="logo.png" class="logo" alt="Logo">
-    <div class="title-container">
-        <h1>LA Printing Services</h1>
-        <h3>Engraving Services</h3>
+
+<!-- Floating Cart -->
+<div id="floatingCart" onclick="toggleMiniCart()">🛒 <span id="cart-count">0</span></div>
+
+<!-- Mini Cart Popup -->
+<div id="miniCart">
+    <h3>Your Cart</h3>
+    <div id="cart-items"></div>
+    <div class="cart-total">Total: ₱<span id="mini-total">0</span></div>
+    <button onclick="openCheckout()">Checkout</button>
+</div>
+
+<!-- Checkout Modal -->
+<div id="checkoutModal">
+    <div id="checkoutContent">
+        <h3>Checkout</h3>
+        <div id="checkout-cart"></div>
+        <p>Total: ₱<span id="checkout-total">0</span></p>
+        <label>Name</label><input type="text" id="customerName">
+        <label>Email</label><input type="email" id="customerEmail">
+        <label>Address</label><input type="text" id="customerAddress">
+        <label>Mode of Payment</label>
+        <select id="paymentMode">
+            <option>Cash on Delivery</option>
+            <option>GCash</option>
+            <option>Bank Transfer</option>
+        </select>
+        <button onclick="confirmCheckout()">Confirm Order</button>
     </div>
+</div>
+
+<!-- Item Added Popup -->
+<div id="itemAddedPopup">Item Added to Cart</div>
+
+<!-- Order Confirmed Popup -->
+<div id="orderConfirmedPopup">✅ Order Confirmed!</div>
+
+</div>
   </div>
 <nav>
     <a href="#homeSection">HOME</a>
@@ -356,10 +434,50 @@ function submitContact(){
     document.getElementById('contactEmail').value='';
     document.getElementById('contactMessage').value='';
 }
+    // Smooth scroll for header links
+document.querySelectorAll('header nav a').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth'});
+    });
+});
+
+// "Shop Now" button scrolls to products
+document.getElementById('shopNowBtn').addEventListener('click', ()=>{
+    const products = document.getElementById('productsSection');
+    products.scrollIntoView({behavior:'smooth'});
+});
+
+// Contact form
+function submitContact(){
+    const name = document.getElementById('contactName').value;
+    const email = document.getElementById('contactEmail').value;
+    const message = document.getElementById('contactMessage').value;
+    if(!name || !email || !message){
+        alert('Please fill in all fields');
+        return;
+    }
+
+    // Reset form
+    document.getElementById('contactName').value='';
+    document.getElementById('contactEmail').value='';
+    document.getElementById('contactMessage').value='';
+
+    // Show floating Message Sent popup
+    const popup = document.getElementById('messageSentPopup');
+    popup.classList.add('show');
+    setTimeout(()=>{
+        popup.classList.remove('show');
+        popup.classList.add('hide');
+    },2000); // show 2s
+    setTimeout(()=>{ popup.classList.remove('hide'); },2500);
+}
     
 </script>
     
 <div id="orderConfirmedPopup">✅ Order Confirmed!</div>
+<div id="messageSentPopup">✉️ Message Sent!</div>
     
 </body>
 </html>
