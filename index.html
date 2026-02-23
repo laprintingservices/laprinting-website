@@ -7,307 +7,100 @@
 <style>
 /* ===== GENERAL ===== */
 body, html {
-    margin: 0;
-    padding: 0;
+    margin:0; padding:0;
     font-family: Arial, sans-serif;
-    background-color: #fff;
-    color: #000;
+    background:#fff; color:#000;
 }
 
 /* ===== HEADER ===== */
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px 20px;
-    background-color: #000;
-    color: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:5px 20px; background:#000; color:#fff; position:sticky; top:0; z-index:10;
 }
-
-.logo-title {
-    display: flex;
-    align-items: center;
-}
-
-header .logo {
-    height: 50px;
-    width: auto;
-    object-fit: contain;
-    margin-right: 10px;
-}
-
-header .title-container h1,
-header .title-container h3 {
-    margin: 0;
-    padding: 0;
-}
-
-header nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: bold;
-}
-
-header nav a:hover {
-    text-decoration: underline;
-}
+.logo-title { display:flex; align-items:center; }
+header .logo { height:50px; width:auto; object-fit:contain; margin-right:10px; }
+header .title-container h1, header .title-container h3 { margin:0; padding:0; }
+header nav a { color:#fff; text-decoration:none; margin-left:20px; font-weight:bold; }
+header nav a:hover { text-decoration:underline; }
 
 /* ===== PRODUCTS ===== */
-.products-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-}
-
-.product-card {
-    border: 1px solid #000;
-    border-radius: 12px;
-    padding: 10px;
-    width: 200px;
-    text-align: center;
-    transition: transform 0.2s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-}
-
-.product-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: contain;
-    border-radius: 12px;
-}
-
-.product-card h4 {
-    margin: 5px 0 0 0;
-}
-
-.product-card p.price {
-    font-weight: bold;
-    margin: 5px 0;
-}
-
-.product-card button {
-    margin-top: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 8px;
-    border: none;
-    background-color: #000;
-    color: #fff;
-}
+.products-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; }
+.product-card { border:1px solid #000; border-radius:12px; padding:10px; width:200px; text-align:center; transition:transform 0.2s ease; }
+.product-card:hover { transform:translateY(-5px); }
+.product-card img { width:100%; height:150px; object-fit:contain; border-radius:12px; }
+.product-card h4 { margin:5px 0 0 0; }
+.product-card p.price { font-weight:bold; margin:5px 0; }
+.product-card button { margin-top:5px; padding:5px 10px; cursor:pointer; border-radius:8px; border:none; background:#000; color:#fff; }
 
 /* Quantity buttons */
-.product-card div button {
-    border-radius: 8px;
-}
+.product-card div button { border-radius:8px; }
 
 /* ===== FLOATING CART ===== */
 #floatingCart {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #000;
-    color: #fff;
-    padding: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 20px;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position:fixed; bottom:20px; right:20px; background:#000; color:#fff; padding:15px; border-radius:50%;
+    cursor:pointer; font-size:20px; z-index:100; display:flex; align-items:center; justify-content:center;
 }
-
 #floatingCart span {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: red;
-    color: #fff;
-    font-size: 12px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position:absolute; top:-5px; right:-5px; background:red; color:#fff; font-size:12px; width:18px; height:18px;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
 }
 
-/* ===== MINI CART POPUP ===== */
+/* ===== MINI CART ===== */
 #miniCart {
-    position: fixed;
-    bottom: 70px;
-    right: 20px;
-    width: 250px;
-    max-height: 300px;
-    background-color: #fff;
-    border: 1px solid #000;
-    border-radius: 12px;
-    padding: 10px;
-    overflow-y: auto;
-    display: none;
-    z-index: 99;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    position:fixed; bottom:70px; right:20px; width:300px; max-height:400px; background:#fff; border:1px solid #000;
+    border-radius:12px; padding:10px; overflow-y:auto; display:none; z-index:99; box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
-
-#miniCart h3 {
-    margin-top: 0;
-    text-align: center;
-    border-bottom: 1px solid #000;
-    padding-bottom: 5px;
-}
-
-#miniCart p {
-    margin: 5px 0;
-}
-
-#miniCart button {
-    margin-top: 10px;
-    width: 100%;
-    border-radius: 8px;
-    padding: 8px;
-}
+#miniCart h3 { margin-top:0; text-align:center; border-bottom:1px solid #000; padding-bottom:5px; }
+#miniCart p { margin:5px 0; }
+#miniCart .cart-total { font-weight:bold; margin-top:10px; text-align:right; }
+#miniCart button { margin-top:10px; width:100%; border-radius:8px; padding:8px; cursor:pointer; }
 
 /* ===== CHECKOUT MODAL ===== */
-#checkoutModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 200;
-}
-
+#checkoutModal { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); display:none; justify-content:center; align-items:center; z-index:200; }
 #checkoutContent {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 400px;
-    max-height: 90%;
-    overflow-y: auto;
+    background:#fff; padding:20px; border-radius:12px; width:90%; max-width:400px; max-height:90%; overflow-y:auto;
 }
+#checkoutContent h3 { margin-top:0; text-align:center; margin-bottom:10px; }
+#checkoutContent label { display:block; margin:10px 0 5px; }
+#checkoutContent input, #checkoutContent select { width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; }
+#checkoutContent button { margin-top:15px; width:100%; padding:10px; background:#000; color:#fff; border-radius:12px; border:none; cursor:pointer; }
 
-#checkoutContent h3 {
-    margin-top: 0;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-#checkoutContent label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-#checkoutContent input, #checkoutContent select {
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-#checkoutContent button {
-    margin-top: 15px;
-    width: 100%;
-    padding: 10px;
-    background-color: #000;
-    color: #fff;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-}
-    #itemAddedPopup {
-    position: fixed;
-    bottom: 100px;
-    right: 20px;
-    background-color: #000;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 12px;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: 150;
-    pointer-events: none;
+/* ===== ITEM ADDED POPUP ===== */
+#itemAddedPopup {
+    position:fixed; bottom:100px; right:20px; background:#000; color:#fff; padding:10px 20px; border-radius:12px;
+    opacity:0; transition:opacity 0.5s ease; z-index:150; pointer-events:none;
 }
 
 /* ===== WELCOME PAGE ===== */
 .welcome-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    padding: 0 20px;
-    background-color: #fff;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    height:100vh; text-align:center; padding:0 20px; background:#fff;
 }
+.welcome-container h1 { font-size:48px; margin:0; }
+.welcome-container h2 { font-family:"Georgia","Times New Roman",serif; font-size:24px; margin:10px 0; font-style:italic; font-weight:normal; color:#222; }
+.welcome-container p { font-size:16px; margin:5px 0 20px 0; color:#333; }
+.welcome-container button { background:#000; color:#fff; padding:12px 30px; border:none; border-radius:12px; font-size:16px; cursor:pointer; transition:transform 0.2s; }
+.welcome-container button:hover { transform:scale(1.05); }
 
-.welcome-container h1.welcome-title {
-    font-size: 48px;
-    margin: 0;
-}
-
-.welcome-container h2.welcome-tagline {
-    font-family: "Georgia", "Times New Roman", serif;
-    font-size: 24px;
-    margin: 10px 0;
-    font-style: italic;
-    font-weight: normal;
-    color: #222;
-}
-
-.welcome-container p.welcome-subtitle {
-    font-size: 16px;
-    margin: 5px 0 20px 0;
-    color: #333;
-}
-
-.welcome-container button.welcome-btn {
-    background-color: #000;
-    color: #fff;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.welcome-container button.welcome-btn:hover {
-    transform: scale(1.05);
-}
-
-.fade-out {opacity:0; transition: opacity 1s ease;}
-.fade-in {opacity:1; transition: opacity 1s ease;}
+.fade-out { opacity:0; transition:opacity 1s ease; }
+.fade-in { opacity:1; transition:opacity 1s ease; }
 </style>
 </head>
 <body class="welcome">
 
 <!-- WELCOME PAGE -->
 <div class="welcome-container" id="welcomePage">
-    <h1 class="welcome-title">LA Printing Services</h1>
-    <h2 class="welcome-tagline">Precision. Elegant. Lasting Engravings.</h2>
-    <p class="welcome-subtitle">Your trusted partner for custom engraved products.</p>
-    <button id="orderNow" class="welcome-btn">Order Now</button>
+    <h1>LA Printing Services</h1>
+    <h2>Precision. Elegant. Lasting Engravings.</h2>
+    <p>Your trusted partner for custom engraved products.</p>
+    <button id="orderNow">Order Now</button>
 </div>
 
 <!-- SHOP PAGE -->
 <div id="shopPage" style="display:none;">
 <header>
   <div class="logo-title">
-    <img src="logo.png" alt="Logo" class="logo">
+    <img src="logo.png" class="logo" alt="Logo">
     <div class="title-container">
         <h1>LA Printing Services</h1>
         <h3>Engraving Services</h3>
@@ -323,38 +116,36 @@ header nav a:hover {
 <main class="products-container"></main>
 
 <div id="floatingCart" onclick="toggleMiniCart()">🛒 <span id="cart-count">0</span></div>
-
 <div id="miniCart">
     <h3>Your Cart</h3>
     <div id="cart-items"></div>
+    <div class="cart-total">Total: ₱<span id="mini-total">0</span></div>
     <button onclick="openCheckout()">Checkout</button>
 </div>
 
-<!-- CHECKOUT MODAL -->
 <div id="checkoutModal">
     <div id="checkoutContent">
         <h3>Checkout</h3>
         <div id="checkout-cart"></div>
         <p>Total: ₱<span id="checkout-total">0</span></p>
-        <label>Name</label>
-        <input type="text" id="customerName">
-        <label>Email</label>
-        <input type="email" id="customerEmail">
-        <label>Address</label>
-        <input type="text" id="customerAddress">
+        <label>Name</label><input type="text" id="customerName">
+        <label>Email</label><input type="email" id="customerEmail">
+        <label>Address</label><input type="text" id="customerAddress">
         <label>Mode of Payment</label>
         <select id="paymentMode">
-            <option value="Cash on Delivery">Cash on Delivery</option>
-            <option value="GCash">GCash</option>
-            <option value="Bank Transfer">Bank Transfer</option>
+            <option>Cash on Delivery</option>
+            <option>GCash</option>
+            <option>Bank Transfer</option>
         </select>
         <button onclick="confirmCheckout()">Confirm Order</button>
     </div>
 </div>
+
+<div id="itemAddedPopup">Item Added to Cart</div>
 </div>
 
 <script>
-// ===== PRODUCTS DATA WITH PRICES =====
+// ===== PRODUCTS DATA =====
 const products = [
     {name:"Bamboo Pen", img:"bamboopen.png", price:50},
     {name:"Notebook", img:"notebook.png", price:120},
@@ -371,97 +162,90 @@ const products = [
 const cart = {};
 
 // ===== WELCOME → SHOP =====
-document.getElementById('orderNow').addEventListener('click', () => {
-    const welcome = document.getElementById('welcomePage');
-    const shop = document.getElementById('shopPage');
+document.getElementById('orderNow').addEventListener('click', ()=>{
+    const welcome=document.getElementById('welcomePage');
+    const shop=document.getElementById('shopPage');
     welcome.classList.add('fade-out');
-    setTimeout(() => {
-        welcome.style.display = 'none';
-        shop.style.display = 'block';
+    setTimeout(()=>{
+        welcome.style.display='none';
+        shop.style.display='block';
         shop.classList.add('fade-in');
         renderProducts();
-    }, 1000);
+    },1000);
 });
 
 // ===== RENDER PRODUCTS =====
-function renderProducts() {
-    const container = document.querySelector('.products-container');
-    container.innerHTML = '';
-    products.forEach((p,index) => {
-        const card = document.createElement('div');
+function renderProducts(){
+    const container=document.querySelector('.products-container');
+    container.innerHTML='';
+    products.forEach((p,i)=>{
+        const card=document.createElement('div');
         card.classList.add('product-card');
-        card.innerHTML = `
+        card.innerHTML=`
             <img src="${p.img}" alt="${p.name}">
             <h4>${p.name}</h4>
             <p class="price">₱${p.price}</p>
             <div>
-                <button onclick="decrement(${index})">-</button>
-                <span id="qty-${index}">0</span>
-                <button onclick="increment(${index})">+</button>
+                <button onclick="decrement(${i})">-</button>
+                <span id="qty-${i}">0</span>
+                <button onclick="increment(${i})">+</button>
             </div>
-            <button onclick="addToCart(${index})">Add to Cart</button>
+            <button onclick="addToCart(${i})">Add to Cart</button>
         `;
         container.appendChild(card);
     });
 }
 
-// ===== CART FUNCTIONS =====
-function increment(i){
-    const qty = document.getElementById(`qty-${i}`);
-    qty.textContent = parseInt(qty.textContent)+1;
-}
-function decrement(i){
-    const qty = document.getElementById(`qty-${i}`);
-    if(parseInt(qty.textContent)>0) qty.textContent=parseInt(qty.textContent)-1;
-}
+// ===== QUANTITY =====
+function increment(i){ const q=document.getElementById(`qty-${i}`); q.textContent=parseInt(q.textContent)+1; }
+function decrement(i){ const q=document.getElementById(`qty-${i}`); if(parseInt(q.textContent)>0) q.textContent=parseInt(q.textContent)-1; }
+
+// ===== ADD TO CART =====
 function addToCart(i){
-    const qty = parseInt(document.getElementById(`qty-${i}`).textContent);
+    const qty=parseInt(document.getElementById(`qty-${i}`).textContent);
     if(qty===0) return;
-    const productName = products[i].name;
-
-    // Add/update cart
-    cart[productName] = {qty: qty, price: products[i].price};
-
-    // Update mini cart & count
+    const name=products[i].name;
+    cart[name]={qty, price:products[i].price};
     updateCart();
-
-    // Show popup
-    const popup = document.getElementById('itemAddedPopup');
-    popup.style.opacity = '1';
-    setTimeout(() => {
-        popup.style.opacity = '0';
-    }, 1500);
+    const popup=document.getElementById('itemAddedPopup');
+    popup.style.opacity='1';
+    setTimeout(()=>{ popup.style.opacity='0'; },1500);
 }
+
+// ===== UPDATE CART =====
 function updateCart(){
-    const cartEl = document.getElementById('cart-items');
-    cartEl.innerHTML = '';
-    let count=0;
+    const cartEl=document.getElementById('cart-items');
+    const miniTotal=document.getElementById('mini-total');
+    cartEl.innerHTML=''; let total=0; let count=0;
     for(let key in cart){
-        cartEl.innerHTML += `<p>${key} x ${cart[key].qty}</p>`;
-        count += cart[key].qty;
+        const subtotal=cart[key].qty*cart[key].price;
+        cartEl.innerHTML+=`<p>${key} x ${cart[key].qty} - ₱${subtotal}</p>`;
+        total+=subtotal;
+        count+=cart[key].qty;
     }
+    miniTotal.textContent=total;
     document.getElementById('cart-count').textContent=count;
 }
 
 // ===== MINI CART =====
 function toggleMiniCart(){
-    const mini = document.getElementById('miniCart');
+    const mini=document.getElementById('miniCart');
     mini.style.display=(mini.style.display==='block')?'none':'block';
 }
 
 // ===== CHECKOUT =====
 function openCheckout(){
-    const modal = document.getElementById('checkoutModal');
-    const cartDiv = document.getElementById('checkout-cart');
-    const totalEl = document.getElementById('checkout-total');
-    let total = 0;
-    cartDiv.innerHTML = '';
+    const modal=document.getElementById('checkoutModal');
+    const cartDiv=document.getElementById('checkout-cart');
+    const totalEl=document.getElementById('checkout-total');
+    let total=0;
+    cartDiv.innerHTML='';
     for(let key in cart){
-        let subtotal = cart[key].qty * cart[key].price;
-        cartDiv.innerHTML += `<p>${key} x ${cart[key].qty} - ₱${subtotal}</p>`;
-        total += subtotal;
+        const subtotal=cart[key].qty*cart[key].price;
+        cartDiv.innerHTML+=`<p>${key} x ${cart[key].qty} - ₱${subtotal}</p>`;
+        total+=subtotal;
     }
-    totalEl.textContent = total;
+    totalEl.textContent=total;
     modal.style.display='flex';
 }
 
@@ -473,18 +257,15 @@ function confirmCheckout(){
     if(!name||!email||!address){ alert('Please fill in all fields'); return; }
     alert(`Order Confirmed!\nName: ${name}\nEmail: ${email}\nAddress: ${address}\nPayment: ${payment}`);
     document.getElementById('checkoutModal').style.display='none';
-    // Optional: clear cart
     for(let key in cart) delete cart[key];
     updateCart();
 }
 
-// Close modal if clicked outside content
+// Close modal if clicked outside
 document.getElementById('checkoutModal').addEventListener('click', e=>{
     if(e.target.id==='checkoutModal') e.target.style.display='none';
 });
 </script>
-    
-<div id="itemAddedPopup">Item Added to Cart</div>
-    
+
 </body>
 </html>
