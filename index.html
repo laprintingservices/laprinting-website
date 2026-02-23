@@ -8,7 +8,7 @@
 /* ===== GENERAL ===== */
 body, html {
     margin: 0; /* remove default margin */
-    padding: 0;
+    padding: 0; /* remove default padding */
     font-family: Arial, sans-serif;
     background-color: #fff;
     color: #000;
@@ -19,7 +19,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 20px; /* minimal padding */
+    padding: 5px 20px; /* minimal padding top/bottom */
     background-color: #000;
     color: #fff;
     position: sticky;
@@ -28,25 +28,24 @@ header {
     flex-wrap: wrap;
 }
 
-/* Fix logo */
 header .logo {
     height: 50px;
-    width: auto;
+    width: auto; /* maintain aspect ratio */
     object-fit: contain;
     margin-right: 10px;
 }
 
-/* Remove default margin from headings inside header */
-header .title-container h1,
-header .title-container h3 {
-    margin: 0;
-    padding: 0;
+header .title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: auto;
 }
 
+header .title-container h1,
 header .title-container h3 {
-    margin: 0;
-    font-size: 14px;
-    font-weight: normal;
+    margin: 0; /* remove default margin */
+    padding: 0; /* remove padding */
 }
 
 header nav a {
