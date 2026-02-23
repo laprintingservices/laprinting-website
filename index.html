@@ -189,37 +189,39 @@ header nav a:hover { text-decoration:underline; }
 <!-- HOME SECTION (after header) -->
 <section id="homeSection" style="padding:50px 20px; text-align:center; background:#fff;">
   
-  <!-- Tagline (same font as welcome page) -->
-  <h2 class="home-tagline" style="font-family: 'Georgia', 'Times New Roman', serif; font-size:32px; font-style:italic; margin-bottom:30px;">
+  <h1 style="font-size:48px; margin-bottom:20px;">Welcome to LA Printing Services</h1>
+  
+  <h2 style="font-family:'Georgia', 'Times New Roman', serif; font-size:40px; font-style:italic; margin-bottom:20px;">
     Precision. Elegant. Lasting Engravings.
   </h2>
   
-  <!-- About Us -->
-  <div class="about-us" style="max-width:700px; margin:0 auto; margin-bottom:30px; text-align:left;">
-    <h3>About Us</h3>
-    <p>
-      LA Printing Services was founded by a young and passionate entrepreneur who dreamed of owning her own business from an early age.  
-      Every custom engraved product you order helps inspire and support this student with her dreams, giving hope for a brighter future.
-    </p>
-  </div>
-  
-  <!-- Welcome text -->
-  <h3 style="margin-bottom:10px;">Welcome to LA Printing Services</h3>
-  <p style="margin-bottom:30px; font-size:16px; color:#333;">
+  <p style="font-size:24px; margin-bottom:30px; color:#333;">
     Your trusted partner for custom engraved products.
   </p>
   
-  <!-- Shop Now button -->
-  <button id="shopNowBtn" style="background:#000; color:#fff; padding:12px 25px; border:none; border-radius:12px; cursor:pointer; font-size:16px;">Shop Now</button>
+  <button id="shopNowBtn" style="background:#000; color:#fff; padding:15px 35px; border:none; border-radius:12px; cursor:pointer; font-size:18px;">Shop Now</button>
+  
 </section>
 
 <!-- PRODUCTS SECTION -->
 <main id="productsSection" class="products-container"></main>
 
-<!-- CONTACT SECTION (after products) -->
-<section id="contactSection" style="padding:50px 20px; text-align:center; background:#f5f5f5;">
+<!-- BOTTOM SECTION -->
+<section id="bottomSection" style="display:flex; flex-wrap:wrap; gap:20px; padding:50px 20px;">
+
+  <!-- LEFT: ABOUT US -->
+  <div style="flex:1; min-width:300px;">
+    <h2>About Us</h2>
+    <p>
+      LA Printing Services was founded by a young and passionate entrepreneur who dreamed of owning his own business from an early age.  
+      Every custom engraved product you order helps inspire and support students with dreams of their own, giving hope for a brighter future.
+    </p>
+  </div>
+
+  <!-- RIGHT: CONTACT -->
+  <div style="flex:1; min-width:300px; background:#f5f5f5; padding:20px; border-radius:12px;">
     <h2>Contact Us</h2>
-    <form style="max-width:400px; margin:0 auto; text-align:left;">
+    <form>
         <label for="contactName">Name</label>
         <input type="text" id="contactName" style="width:100%; padding:8px; border-radius:8px; margin-bottom:10px; border:1px solid #ccc;">
         
@@ -229,8 +231,10 @@ header nav a:hover { text-decoration:underline; }
         <label for="contactMessage">Message</label>
         <textarea id="contactMessage" rows="4" style="width:100%; padding:8px; border-radius:8px; margin-bottom:10px; border:1px solid #ccc;"></textarea>
         
-        <button type="button" onclick="submitContact()" style="background:#000; color:#fff; padding:10px 20px; border:none; border-radius:12px; cursor:pointer;">Send Message</button>
+        <button type="button" onclick="submitContact()" style="background:#000; color:#fff; padding:12px 20px; border:none; border-radius:12px; cursor:pointer; font-size:16px;">Send Message</button>
     </form>
+  </div>
+
 </section>
 
 <!-- Floating Cart -->
@@ -481,7 +485,7 @@ document.querySelectorAll('header nav a').forEach(link => {
     });
 });
 
-// "Shop Now" button scrolls to products
+// Shop Now button scrolls to products
 document.getElementById('shopNowBtn').addEventListener('click', ()=>{
     const products = document.getElementById('productsSection');
     products.scrollIntoView({behavior:'smooth'});
