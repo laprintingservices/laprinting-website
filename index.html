@@ -8,43 +8,24 @@
 <style>
 body{
     margin:0;
-    font-family: Arial, sans-serif;
-    background:white;
-    color:black;
-    transition: opacity 0.8s ease;
+    font-family: 'Segoe UI', sans-serif;
+    background:#fff;
+    color:#000;
+    transition:opacity 0.6s ease;
 }
 
-.fade-out{
-    opacity:0;
-}
-
-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px;
-    border-bottom:1px solid black;
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.logo img{
-    height:60px;
-}
-
-.sub{
-    font-size:14px;
-    letter-spacing:2px;
-}
-
-.cart-icon{
+h1,h2,h3,h4{margin:5px 0;}
+button{
+    background:#000;
+    color:#fff;
+    border:none;
+    padding:8px 15px;
     cursor:pointer;
-    font-size:22px;
+    transition:0.3s;
 }
+button:hover{opacity:0.8;}
+
+.fade-out{opacity:0;}
 
 .welcome{
     height:100vh;
@@ -55,116 +36,151 @@ header{
     text-align:center;
 }
 
-button{
-    background:black;
-    color:white;
-    padding:10px 20px;
-    border:none;
-    cursor:pointer;
-    margin-top:20px;
+header{
+    display:none;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    border-bottom:1px solid #000;
 }
 
 .products{
     display:none;
     padding:40px;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
     gap:30px;
 }
 
 .product{
-    border:1px solid black;
+    border:1px solid #000;
     padding:15px;
     text-align:center;
 }
 
 .product img{
     width:100%;
-    height:150px;
+    height:160px;
     object-fit:contain;
 }
 
 .qty{
     display:flex;
     justify-content:center;
-    align-items:center;
     gap:10px;
     margin-top:10px;
 }
 
-.qty button{
-    padding:5px 10px;
-}
+.cart-icon{cursor:pointer;font-size:20px;}
 
 .cart-panel{
     position:fixed;
     right:-400px;
     top:0;
-    width:300px;
+    width:350px;
     height:100%;
-    background:white;
-    border-left:1px solid black;
+    background:#fff;
+    border-left:1px solid #000;
     padding:20px;
-    transition:0.5s;
     overflow:auto;
+    transition:0.4s;
+}
+.cart-panel.active{right:0;}
+
+.checkout-page, .admin-page{
+    display:none;
+    padding:40px;
 }
 
-.cart-panel.active{
-    right:0;
-}
-
-.checkout{
-    margin-top:20px;
+input, select{
     width:100%;
+    padding:8px;
+    margin-bottom:10px;
+    border:1px solid #000;
+}
+
+.admin-btn{
+    position:fixed;
+    bottom:20px;
+    left:20px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- WELCOME PAGE -->
+<!-- WELCOME -->
 <div class="welcome" id="welcome">
     <img src="logo.png" width="120">
     <h1>LA Printing Services</h1>
-    <div class="sub">Engraving Services</div>
+    <h4>Engraving Services</h4>
     <button onclick="enterSite()">Order Now</button>
 </div>
 
-<!-- MAIN PAGE -->
-<header style="display:none;" id="mainHeader">
-    <div class="logo">
-        <img src="logo.png">
-        <div>
-            <h2>LA Printing Services</h2>
-            <div class="sub">Engraving Services</div>
-        </div>
+<!-- HEADER -->
+<header id="mainHeader">
+    <div>
+        <h2>LA Printing Services</h2>
+        <small>Engraving Services</small>
     </div>
     <div class="cart-icon" onclick="toggleCart()">🛒 (<span id="cartCount">0</span>)</div>
 </header>
 
+<!-- PRODUCTS -->
 <div class="products" id="productList"></div>
 
 <!-- CART -->
 <div class="cart-panel" id="cartPanel">
     <h3>Your Cart</h3>
     <div id="cartItems"></div>
-    <button class="checkout">Checkout</button>
+    <h4>Total: ₱<span id="totalPrice">0</span></h4>
+    <button onclick="goCheckout()">Checkout</button>
 </div>
+
+<!-- CHECKOUT -->
+<div class="checkout-page" id="checkoutPage">
+    <h2>Checkout</h2>
+    <input type="text" id="custName" placeholder="Full Name">
+    <input type="text" id="custAddress" placeholder="Address">
+    <input type="text" id="custContact" placeholder="Contact Number">
+    
+    <select id="paymentMethod">
+        <option value="GCash">GCash</option>
+        <option value="Cash on Pickup">Cash on Pickup</option>
+    </select>
+
+    <div id="gcashInfo">
+        <p>Send payment to: <b>09XXXXXXXXX</b></p>
+        <input type="file">
+    </div>
+
+    <button onclick="placeOrder()">Place Order</button>
+</div>
+
+<!-- ADMIN -->
+<div class="admin-page" id="adminPage">
+    <h2>Admin Panel</h2>
+    <div id="ordersList"></div>
+</div>
+
+<button class="admin-btn" onclick="openAdmin()">Admin</button>
 
 <script>
 const products = [
-{name:"Bamboo Pen", img:"bamboopen.png"},
-{name:"Notebook", img:"notebook.png"},
-{name:"Bamboo Keychain", img:"bambookeychain.png"},
-{name:"Leather Keychain", img:"leatherkeychain.png"},
-{name:"Cutlery Set", img:"cutlery.png"},
-{name:"Bottle Opener", img:"opener.png"},
-{name:"Bamboo Mirror", img:"deskmirror.png"},
-{name:"Mini Folding Mirror", img:"minimirror.png"},
-{name:"ID Card Holder", img:"idholder.png"},
-{name:"Wallet", img:"wallet.png"}
+{name:"Bamboo Pen", img:"bamboopen.png", price:35},
+{name:"Notebook", img:"notebook.png", price:120},
+{name:"Bamboo Keychain", img:"bambookeychain.png", price:40},
+{name:"Leather Keychain", img:"leatherkeychain.png", price:60},
+{name:"Cutlery Set", img:"cutlery.png", price:150},
+{name:"Bottle Opener", img:"opener.png", price:50},
+{name:"Bamboo Mirror", img:"deskmirror.png", price:180},
+{name:"Mini Folding Mirror", img:"minimirror.png", price:90},
+{name:"ID Card Holder", img:"idholder.png", price:70},
+{name:"Wallet", img:"wallet.png", price:250}
 ];
 
 let cart = {};
+let total = 0;
 
 function enterSite(){
     document.body.classList.add("fade-out");
@@ -173,17 +189,18 @@ function enterSite(){
         document.getElementById("mainHeader").style.display="flex";
         document.getElementById("productList").style.display="grid";
         document.body.classList.remove("fade-out");
-    },800);
+    },600);
 }
 
 const productList = document.getElementById("productList");
 
 products.forEach(p=>{
-    const div = document.createElement("div");
+    const div=document.createElement("div");
     div.className="product";
     div.innerHTML=`
         <img src="${p.img}">
         <h4>${p.name}</h4>
+        <p>₱${p.price}</p>
         <div class="qty">
             <button onclick="updateQty('${p.name}',-1)">-</button>
             <span id="${p.name}">0</span>
@@ -194,6 +211,7 @@ products.forEach(p=>{
 });
 
 function updateQty(name,change){
+    const product = products.find(p=>p.name===name);
     if(!cart[name]) cart[name]=0;
     cart[name]+=change;
     if(cart[name]<0) cart[name]=0;
@@ -204,18 +222,63 @@ function updateQty(name,change){
 function renderCart(){
     const cartItems=document.getElementById("cartItems");
     cartItems.innerHTML="";
-    let totalCount=0;
+    total=0;
+    let count=0;
+
     for(let item in cart){
         if(cart[item]>0){
-            cartItems.innerHTML+=`<p>${item} x ${cart[item]}</p>`;
-            totalCount+=cart[item];
+            const product=products.find(p=>p.name===item);
+            let itemTotal=product.price*cart[item];
+            total+=itemTotal;
+            count+=cart[item];
+            cartItems.innerHTML+=`<p>${item} x ${cart[item]} = ₱${itemTotal}</p>`;
         }
     }
-    document.getElementById("cartCount").innerText=totalCount;
+
+    document.getElementById("totalPrice").innerText=total;
+    document.getElementById("cartCount").innerText=count;
 }
 
 function toggleCart(){
     document.getElementById("cartPanel").classList.toggle("active");
+}
+
+function goCheckout(){
+    document.getElementById("checkoutPage").style.display="block";
+    document.getElementById("cartPanel").classList.remove("active");
+}
+
+function placeOrder(){
+    const name=document.getElementById("custName").value;
+    const address=document.getElementById("custAddress").value;
+    const contact=document.getElementById("custContact").value;
+    const payment=document.getElementById("paymentMethod").value;
+
+    const order={
+        name,address,contact,payment,cart,total
+    };
+
+    let orders=JSON.parse(localStorage.getItem("orders"))||[];
+    orders.push(order);
+    localStorage.setItem("orders",JSON.stringify(orders));
+
+    alert("Order Placed Successfully!");
+    location.reload();
+}
+
+function openAdmin(){
+    document.getElementById("adminPage").style.display="block";
+    const orders=JSON.parse(localStorage.getItem("orders"))||[];
+    const container=document.getElementById("ordersList");
+    container.innerHTML="";
+    orders.forEach((o,i)=>{
+        container.innerHTML+=`
+            <hr>
+            <p><b>Order #${i+1}</b></p>
+            <p>Name: ${o.name}</p>
+            <p>Total: ₱${o.total}</p>
+        `;
+    });
 }
 </script>
 
