@@ -181,15 +181,15 @@ header{
     object-fit:contain;
     margin-bottom:15px;
 }
-    .products-wrapper{
-    display:flex;
-    justify-content:center; /* center ang grid */
+.products-wrapper {
+    display: flex;
+    justify-content: center; /* center ang whole grid */
 }
 
-.products{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 250px)); /* fixed width para hindi kumalat */
-    gap:40px;
+.products {
+    display: inline-grid;  /* inline-grid para ma-center yung grid mismo */
+    grid-template-columns: repeat(auto-fill, 250px); /* fixed width bawat card */
+    gap: 40px;
 }
 
 .qty{
