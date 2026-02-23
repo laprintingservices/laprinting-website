@@ -233,7 +233,7 @@ header{
 </div>
 
 <!-- HEADER -->
-<header id="mainHeader">
+<header id="mainHeader" style="display:none;">
     <div class="header-left">
         <img src="logo.png" class="header-logo">
         <div class="header-text">
@@ -262,11 +262,9 @@ header{
 </section>
 
 <!-- PRODUCTS -->
-<section class="products-section" id="productsSection">
+<section class="products-section" id="productsSection" style="display:none;">
     <h2 class="section-title">ENGRAVED PRODUCTS</h2>
-    <div class="products-wrapper">
-        <div class="products" id="productList"></div>
-    </div>
+    <div class="products" id="productList"></div>
 </section>
 
 <!-- CART PANEL -->
@@ -336,9 +334,22 @@ let total = 0;
 
 // ===== FUNCTIONS =====
 function enterSite(){
-    document.getElementById("welcome").style.display="none";
-    document.getElementById("mainHeader").style.display="flex";
-    document.getElementById("productList").style.display="grid";
+    // fade effect
+    document.body.classList.add("fade-out");
+    setTimeout(()=>{
+        // hide welcome screen
+        document.getElementById("welcome").style.display = "none";
+
+        // show header & products
+        document.getElementById("mainHeader").style.display = "flex";
+        document.getElementById("productsSection").style.display = "block";
+
+        // remove fade
+        document.body.classList.remove("fade-out");
+
+        // scroll to top
+        window.scrollTo({top:0, behavior:"smooth"});
+    }, 600);
 }
 
 const productList = document.getElementById("productList");
