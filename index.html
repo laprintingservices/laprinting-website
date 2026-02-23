@@ -113,16 +113,23 @@ header{
 
 .products{
     display:none;
-    padding:40px;
-    display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap:30px;
+    justify-content:center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    gap:40px;
 }
 
 .product{
     border:1px solid #000;
-    padding:15px;
+    padding:20px;
     text-align:center;
+    border-radius:18px;
+    transition:0.3s;
+    background:#fff;
+}
+
+.product:hover{
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transform:translateY(-4px);
 }
 
 .product img{
@@ -234,6 +241,18 @@ input, select{
     width:30px;
     text-align:center;
 }
+    .products-section{
+    padding:60px 40px;
+    text-align:center;
+}
+
+.section-title{
+    font-size:28px;
+    letter-spacing:4px;
+    margin-bottom:40px;
+    font-weight:900;
+}
+    
     .footer{
     background:#000;
     color:#fff;
@@ -308,7 +327,13 @@ input, select{
 </header>
 
 <!-- PRODUCTS -->
-<div class="products" id="productList"></div>
+<section class="products-section" id="productsSection">
+
+    <h2 class="section-title">ENGRAVED PRODUCTS</h2>
+
+    <div class="products" id="productList"></div>
+
+</section>
 
 <!-- CART -->
 <div class="cart-panel" id="cartPanel">
