@@ -70,6 +70,28 @@ header nav a:hover { text-decoration:underline; }
     position:fixed; bottom:100px; right:20px; background:#000; color:#fff; padding:10px 20px; border-radius:12px;
     opacity:0; transition:opacity 0.5s ease; z-index:150; pointer-events:none;
 }
+/* ===== ORDER CONFIRMED POPUP ===== */
+    #orderConfirmedPopup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745; /* nice green */
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 200;
+    pointer-events: none;
+}
+#orderConfirmedPopup.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+#orderConfirmedPopup.hide {
+    opacity: 0;
+    transform: translateY(-20px);
+}
 
 /* ===== WELCOME PAGE ===== */
 .welcome-container {
@@ -254,11 +276,26 @@ function confirmCheckout(){
     const email=document.getElementById('customerEmail').value;
     const address=document.getElementById('customerAddress').value;
     const payment=document.getElementById('paymentMode').value;
+
     if(!name||!email||!address){ alert('Please fill in all fields'); return; }
-    alert(`Order Confirmed!\nName: ${name}\nEmail: ${email}\nAddress: ${address}\nPayment: ${payment}`);
+
+    // Close checkout modal
     document.getElementById('checkoutModal').style.display='none';
+
+    // Clear cart
     for(let key in cart) delete cart[key];
     updateCart();
+
+    // Show green popup
+    const popup=document.getElementById('orderConfirmedPopup');
+    popup.classList.add('show');
+    setTimeout(()=>{
+        popup.classList.remove('show');
+        popup.classList.add('hide');
+    },2000); // show for 2s
+
+    // Reset hide class after fade out
+    setTimeout(()=>{ popup.classList.remove('hide'); },2500);
 }
 
 // Close modal if clicked outside
@@ -266,6 +303,8 @@ document.getElementById('checkoutModal').addEventListener('click', e=>{
     if(e.target.id==='checkoutModal') e.target.style.display='none';
 });
 </script>
-
+    
+<div id="orderConfirmedPopup">✅ Order Confirmed!</div>
+    
 </body>
 </html>
