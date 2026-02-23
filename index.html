@@ -239,6 +239,10 @@ header nav a:hover { text-decoration:underline; }
         <button type="button" onclick="submitContact()" style="background:#000; color:#fff; padding:12px 20px; border:none; border-radius:12px; cursor:pointer; font-size:16px;">Send Message</button>
     </form>
   </div>
+    <!-- FOOTER -->
+<footer style="background-color:#000; color:#fff; padding:15px 20px; text-align:center; font-size:14px; position:relative; bottom:0; width:100%;">
+    © 2026 LA Printing Services. All rights reserved.
+</footer>
 
 </section>
 
@@ -520,6 +524,7 @@ function submitContact(){
     },2000); // show 2s
     setTimeout(()=>{ popup.classList.remove('hide'); },2500);
 }
+    document.querySelector('footer').textContent = `© ${new Date().getFullYear()} LA Printing Services. All rights reserved.`;
     
 </script>
     
