@@ -137,6 +137,24 @@ header nav a:hover { text-decoration:underline; }
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.8);
 }
+
+    .home-tagline {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: normal;
+    color: #222;
+    margin-bottom: 30px;
+}
+.about-us h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+.about-us p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
     
 </style>
 </head>
@@ -169,10 +187,30 @@ header nav a:hover { text-decoration:underline; }
 </header>
 
 <!-- HOME SECTION (after header) -->
-<section id="homeSection" style="padding:50px 20px; text-align:center;">
-    <h2>Welcome to LA Printing Services</h2>
-    <p>Precision. Elegant. Lasting Engravings. Your trusted partner for custom engraved products.</p>
-    <button id="shopNowBtn" style="background:#000; color:#fff; padding:12px 25px; border:none; border-radius:12px; cursor:pointer; font-size:16px;">Shop Now</button>
+<section id="homeSection" style="padding:50px 20px; text-align:center; background:#fff;">
+  
+  <!-- Tagline (same font as welcome page) -->
+  <h2 class="home-tagline" style="font-family: 'Georgia', 'Times New Roman', serif; font-size:32px; font-style:italic; margin-bottom:30px;">
+    Precision. Elegant. Lasting Engravings.
+  </h2>
+  
+  <!-- About Us -->
+  <div class="about-us" style="max-width:700px; margin:0 auto; margin-bottom:30px; text-align:left;">
+    <h3>About Us</h3>
+    <p>
+      LA Printing Services was founded by a young and passionate entrepreneur who dreamed of owning his own business from an early age.  
+      Every custom engraved product you order helps inspire and support students with dreams of their own, giving hope for a brighter future.
+    </p>
+  </div>
+  
+  <!-- Welcome text -->
+  <h3 style="margin-bottom:10px;">Welcome to LA Printing Services</h3>
+  <p style="margin-bottom:30px; font-size:16px; color:#333;">
+    Your trusted partner for custom engraved products.
+  </p>
+  
+  <!-- Shop Now button -->
+  <button id="shopNowBtn" style="background:#000; color:#fff; padding:12px 25px; border:none; border-radius:12px; cursor:pointer; font-size:16px;">Shop Now</button>
 </section>
 
 <!-- PRODUCTS SECTION -->
