@@ -15,37 +15,35 @@ body, html {
 }
 
 /* ===== HEADER ===== */
+/* Header adjustments */
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 20px; /* minimal padding top/bottom */
+    padding: 5px 20px;
     background-color: #000;
     color: #fff;
     position: sticky;
     top: 0;
     z-index: 10;
-    flex-wrap: wrap;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center; /* vertically center logo + text */
 }
 
 header .logo {
     height: 50px;
-    width: auto; /* maintain aspect ratio */
+    width: auto;
     object-fit: contain;
-    margin-right: 10px;
-}
-
-header .title-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: auto;
+    margin-right: 10px; /* small space between logo and text */
 }
 
 header .title-container h1,
 header .title-container h3 {
-    margin: 0; /* remove default margin */
-    padding: 0; /* remove padding */
+    margin: 0;
+    padding: 0;
 }
 
 header nav a {
@@ -206,16 +204,18 @@ button {
 <!-- ===== SHOP PAGE ===== -->
 <div id="shopPage" style="display:none;">
 <header>
+  <div class="logo-title">
     <img src="logo.png" alt="Logo" class="logo">
     <div class="title-container">
         <h1>LA Printing Services</h1>
         <h3>Engraving Services</h3>
     </div>
-    <nav>
-        <a href="#">HOME</a>
-        <a href="#">PRODUCTS</a>
-        <a href="#">CONTACT</a>
-    </nav>
+  </div>
+  <nav>
+      <a href="#">HOME</a>
+      <a href="#">PRODUCTS</a>
+      <a href="#">CONTACT</a>
+  </nav>
 </header>
 
 <main class="products-container">
