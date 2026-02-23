@@ -204,6 +204,68 @@ input, select{
     font-weight:bold;
     font-size:16px;
 }
+    .add-btn{
+    width:100%;
+    margin-top:12px;
+    padding:10px;
+    background:#000;
+    color:#fff;
+    border:1px solid #000;
+    letter-spacing:1px;
+    transition:0.3s;
+}
+
+.add-btn:hover{
+    background:#fff;
+    color:#000;
+}
+
+.qty-number{
+    font-weight:bold;
+    font-size:18px;
+    width:30px;
+    text-align:center;
+}
+    .footer{
+    background:#000;
+    color:#fff;
+    padding:50px 20px;
+    margin-top:80px;
+    text-align:center;
+}
+
+.footer h3{
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.footer p{
+    font-size:14px;
+    opacity:0.8;
+}
+
+.footer-links{
+    margin:20px 0;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    font-size:13px;
+    letter-spacing:1px;
+}
+
+.footer-links span{
+    cursor:pointer;
+}
+
+.footer-links span:hover{
+    opacity:0.6;
+}
+
+.copyright{
+    margin-top:20px;
+    font-size:12px;
+    opacity:0.6;
+}
 </style>
 </head>
 
@@ -281,7 +343,6 @@ input, select{
     <div id="ordersList"></div>
 </div>
 
-<button class="admin-btn" onclick="openAdmin()">Admin</button>
 
 <script>
 const products = [
@@ -322,18 +383,25 @@ products.forEach(p=>{
 
         <div class="cart-controls">
             <button class="circle-btn" onclick="updateQty('${p.name}',-1)">−</button>
-            
-            <div class="cart-center">
-                <div class="add-label">ADD TO CART</div>
-                <div class="qty-number" id="${p.name}">0</div>
-            </div>
-            
+            <div class="qty-number" id="${p.name}">0</div>
             <button class="circle-btn" onclick="updateQty('${p.name}',1)">+</button>
         </div>
+
+        <button class="add-btn" onclick="addToCart('${p.name}')">
+            ADD TO CART
+        </button>
     `;
 
     productList.appendChild(div);
 });
+    
+    function addToCart(name){
+    if(!cart[name] || cart[name] === 0){
+        alert("Please select quantity first.");
+        return;
+    }
+    toggleCart();
+}
 
 function updateQty(name,change){
     const product = products.find(p=>p.name===name);
@@ -420,6 +488,20 @@ function showContact(){
     document.getElementById("contactSection").style.display="block";
 }
 </script>
-
+    
+<footer class="footer">
+    <div class="footer-content">
+        <h3>LA PRINTING SERVICES</h3>
+        <p>Premium Engraving & Printing Solutions</p>
+        <div class="footer-links">
+            <span>HOME</span>
+            <span>PRODUCTS</span>
+            <span>CONTACT</span>
+        </div>
+        <p class="copyright">
+            © 2026 LA Printing Services. All Rights Reserved.
+        </p>
+    </div>
+</footer>
 </body>
 </html>
