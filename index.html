@@ -7,12 +7,21 @@
 
 <style>
     header{
-    display:none;
+    display:flex;
     justify-content:space-between;
     align-items:center;
     padding:15px 40px;
     background:#000;
     color:#fff;
+}
+    .welcome{
+    position:relative;
+    z-index:10;
+}
+
+header{
+    position:relative;
+    z-index:1;
 }
 
 .header-left{
@@ -209,7 +218,7 @@ input, select{
 </div>
 
 <!-- HEADER -->
-<header id="mainHeader">
+<header id="mainHeader" style="display:none;">
 
     <div class="header-left">
         <img src="logo.png" class="header-logo">
