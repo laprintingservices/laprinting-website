@@ -3,843 +3,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L.A. Printing Services</title>
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+<title>LA Printing Services</title>
 
 <style>
-/* ===== GENERAL ===== */ CSS ITO
-    
-body {
-    margin: 0;
-    font-family: 'League Spartan', sans-serif;
-    background-color: #ffffff;
-    color: #111;
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:white;
+    color:black;
+    transition: opacity 0.8s ease;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-    .checkout-modal {
-    position: fixed;
-    top:0; left:0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 3000;
+.fade-out{
+    opacity:0;
 }
 
-.checkout-content {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    border-bottom:1px solid black;
 }
 
-.checkout-content h2 {
-    margin-top:0;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
 }
 
-.checkout-content select, .checkout-content button {
-    margin-top: 15px;
-    padding: 10px;
-    width: 80%;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+.logo img{
+    height:60px;
 }
 
-
-/* ===== HEADER ===== */
-header {
-    background: #000;
-    color: white;
+.sub{
+    font-size:14px;
+    letter-spacing:2px;
 }
 
-.header-container {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    padding: 15px 50px;
+.cart-icon{
+    cursor:pointer;
+    font-size:22px;
 }
 
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.welcome{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-.header-left img {
-    height: 60px;
-    width: auto;
+button{
+    background:black;
+    color:white;
+    padding:10px 20px;
+    border:none;
+    cursor:pointer;
+    margin-top:20px;
 }
 
-.header-text h1 {
-    margin: 0;
-    font-size: 42px;
-    color: white;
+.products{
+    display:none;
+    padding:40px;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap:30px;
 }
 
-.header-text h2 {
-    margin: 0;
-    font-size: 18px;
-    color: white;
-    font-weight: normal;
+.product{
+    border:1px solid black;
+    padding:15px;
+    text-align:center;
 }
 
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 25px;
+.product img{
+    width:100%;
+    height:150px;
+    object-fit:contain;
 }
 
-.header-right a {
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
+.qty{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
 }
 
-.header-right a:hover {
-    text-decoration: underline;
+.qty button{
+    padding:5px 10px;
 }
 
-/* ===== HERO SECTION ===== */
-.hero {
-    background: #f5f5f5;
-    text-align: center;
-    padding: 100px 20px;
+.cart-panel{
+    position:fixed;
+    right:-400px;
+    top:0;
+    width:300px;
+    height:100%;
+    background:white;
+    border-left:1px solid black;
+    padding:20px;
+    transition:0.5s;
+    overflow:auto;
 }
 
-.hero h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
+.cart-panel.active{
+    right:0;
 }
 
-.btn {
-    background: black;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: bold;
-    display: inline-block;
+.checkout{
+    margin-top:20px;
+    width:100%;
 }
-
-/* ===== PRODUCTS ===== */
-.section {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    padding: 40px 20px;
-}
-
-.card {
-    background: white;
-    padding: 20px;
-    width: 250px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-.card h4 {
-    margin-bottom: 10px;
-}
-
-.card p {
-    margin-bottom: 10px;
-}
-       
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: contain;   /* para hindi ma-crop */
-    background: #f9f9f9;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.card button {
-    margin-top: 10px;
-    width: 100%;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.card div button {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    font-weight: bold;
-    margin: 0 5px;
-}
-
-.card div input {
-    width: 40px;
-    text-align: center;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.card button:hover,
-.card div button:hover {
-    background: #333;
-    color: white;
-}
-
-/* ===== CONTACT ===== */
-input, textarea {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-form button {
-    padding: 10px 20px;
-    background: black;
-    border: none;
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
-}
-
-/* ===== FOOTER ===== */
-footer {
-    background: #000;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: 40px;
-}
-
-/* ===== FLOATING CART ===== */
-.cart-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: black;
-    color: white;
-    font-size: 24px;
-    padding: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-#cart-count {
-    background: white;
-    color: black;
-    font-size: 14px;
-    padding: 2px 6px;
-    border-radius: 50%;
-    position: absolute;
-    top: -5px;
-    right: -5px;
-}
-
-.cart-modal {
-    display: none;
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 300px;
-    background: white;
-    border: 1px solid black;
-    padding: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    z-index: 1000;
-}
-
-.cart-content {
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.cart-content button {
-    margin-top: 5px;
-}
-
-/* Add-to-Cart popup */
-.added-popup {
-    position: fixed;
-    bottom: 80px;
-    right: 50%;
-    transform: translateX(50%);
-    background: black;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s, bottom 0.3s;
-    z-index: 2000;
-    font-weight: bold;
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width: 768px){
-    .products {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .header-container {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px 20px;
-    }
-
-    .header-right {
-        gap: 15px;
-    }
-}
-    /* ===== CARD BUTTONS ===== */
-
-/* Quantity buttons (- / +) */
-.card div button {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;       /* makes it circular */
-    background: black;        /* filled black */
-    color: white;             /* white text */
-    font-weight: bold;
-    border: none;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.card div button:hover {
-    background: #333;         /* slightly lighter on hover */
-}
-
-/* Add to Cart button */
-.card > button {
-    margin-top: 10px;
-    width: 100%;
-    font-weight: bold;
-    border-radius: 25px;
-    background: black;        /* filled black */
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.card > button:hover {
-    background: #333;
-}
-    /* Smooth fade transition */
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.6s ease;
-}
-
-#main-site {
-    opacity: 0;
-    transition: opacity 0.6s ease;
-}
-
-#main-site.fade-in {
-    opacity: 1;
-}
-
-#welcome-screen {
-    transition: opacity 0.6s ease;
-}
-
-
-#main-site {
-    opacity: 0;
-}
-/* ===== CHECKOUT MODAL CENTERED ===== */
-.checkout-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;  /* horizontally center */
-    align-items: center;      /* vertically center */
-    z-index: 3000;
-}
-
-.checkout-content {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    animation: fadeIn 0.3s ease;
-}
-
-/* Optional: smooth fade-in animation */
-@keyframes fadeIn {
-    from {opacity: 0; transform: scale(0.95);}
-    to {opacity: 1; transform: scale(1);}
-}
-
-
 </style>
 </head>
-    
+
 <body>
-     <!-- MAIN SITE -->
-    <div id="main-site" style="display:none;">
-        
-            <!-- HEADER -->
-<header>
-    <div class="header-container">
-        <div class="header-left">
-            <img src="logo.png" alt="Logo">
-            <div class="header-text">
-                <h1>L.A. Printing Services</h1>
-                <h2>Engraving Services</h2>
-            </div>
+
+<!-- WELCOME PAGE -->
+<div class="welcome" id="welcome">
+    <img src="logo.png" width="120">
+    <h1>LA Printing Services</h1>
+    <div class="sub">Engraving Services</div>
+    <button onclick="enterSite()">Order Now</button>
+</div>
+
+<!-- MAIN PAGE -->
+<header style="display:none;" id="mainHeader">
+    <div class="logo">
+        <img src="logo.png">
+        <div>
+            <h2>LA Printing Services</h2>
+            <div class="sub">Engraving Services</div>
         </div>
-        <nav class="header-right">
-            <a href="#">Home</a>
-            <a href="#products">Products</a>
-            <a href="#contact">Contact</a>
-        </nav>
     </div>
+    <div class="cart-icon" onclick="toggleCart()">🛒 (<span id="cartCount">0</span>)</div>
 </header>
-        
-<!-- ORDER CONFIRMED POPUP -->
-<div id="orderConfirmedPopup" style="
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #ffcc00;
-    color: #000;
-    padding: 25px 50px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 5000;
-    transition: opacity 0.4s, transform 0.4s;
-">
-    ORDER CONFIRMED!
+
+<div class="products" id="productList"></div>
+
+<!-- CART -->
+<div class="cart-panel" id="cartPanel">
+    <h3>Your Cart</h3>
+    <div id="cartItems"></div>
+    <button class="checkout">Checkout</button>
 </div>
 
-<!-- CHECKOUT MODAL -->
-<div class="checkout-modal" id="checkoutModal" style="display:none;">
-  <div class="checkout-content">
-    <h2>Checkout</h2>
-
-    <div id="checkout-items"></div>
-    <h3>Total: ₱<span id="checkout-total">0</span></h3>
-
-    <label for="payment">Mode of Payment:</label>
-    <select id="payment" required>
-      <option value="">Select</option>
-      <option value="Cash">Cash on Delivery</option>
-      <option value="GCash">GCash</option>
-      <option value="Bank">Bank Transfer</option>
-    </select>
-
-    <div id="payment-details" style="margin-top:10px;"></div>
-
-    <button onclick="confirmOrder()">Confirm Order</button>
-    <button onclick="toggleCheckout()">Cancel</button>
-  </div>
-</div>
-    
-
-<!-- Floating Cart Icon -->
-<div class="cart-icon" onclick="toggleCart()">
-    🛒
-    <span id="cart-count">0</span>
-</div>
-
-<!-- Cart Modal -->
-<div class="cart-modal" id="cartModal">
-    <div class="cart-content">
-        <h3>Your Cart</h3>
-        <div id="cart-items"></div>
-        <h4>Total: ₱<span id="cart-total">0</span></h4>
-        <button onclick="toggleCart()">Close</button>
-        <button onclick="toggleCheckout()">Proceed to Checkout</button>
-    </div>
-</div>
-
-
-<!-- HERO SECTION -->
-<!-- HERO SECTION -->
-<section class="hero">
-    <h2>Precision. Elegant. Lasting Engravings.</h2>
-    <p>Your trusted partner for custom engraved products.</p>
-    <a href="#contact" class="btn">Order Now</a>
-</section>
-
-<!-- PRODUCTS SECTION -->
-<section class="section" id="products">
-    <h2>Engraved Products</h2>
-    <div class="products">
-
-        <!-- Bamboo Pen -->
-<div class="card">
-    <img src="bamboopen.png" alt="Bamboo Pen">
-    <h4>Bamboo Pen</h4>
-    <p><strong>₱50</strong></p>
-
-    <div class="qty">
-        <button onclick="decrease('bamboopen')">-</button>
-        <input type="text" id="bamboopen" value="1" readonly>
-        <button onclick="increase('bamboopen')">+</button>
-    </div>
-
-    <button onclick="addToCart('Bamboo Pen', 50, 'bamboopen')">
-        Add to Cart
-    </button>
-</div>
-
-<!-- Notebook -->
-<div class="card">
-    <img src="notebook.png" alt="Notebook">
-    <h4>Notebook</h4>
-    <p><strong>₱120</strong></p>
-
-    <div class="qty">
-        <button onclick="decrease('notebook')">-</button>
-        <input type="text" id="notebook" value="1" readonly>
-        <button onclick="increase('notebook')">+</button>
-    </div>
-
-    <button onclick="addToCart('Notebook', 120, 'notebook')">
-        Add to Cart
-    </button>
-</div>
-
-<!-- Bamboo Keychain -->
-<div class="card">
-    <img src="bambookeychain.png" alt="Bamboo Keychain">
-    <h4>Bamboo Keychain</h4>
-    <p><strong>₱40</strong></p>
-
-    <div class="qty">
-        <button onclick="decrease('bambookeychain')">-</button>
-        <input type="text" id="bambookeychain" value="1" readonly>
-        <button onclick="increase('bambookeychain')">+</button>
-    </div>
-
-    <button onclick="addToCart('Bamboo Keychain', 40, 'bambookeychain')">
-        Add to Cart
-    </button>
-</div>
-
-<!-- Leather Keychain -->
-<div class="card">
-    <img src="leatherkeychain.png" alt="Leather Keychain">
-    <h4>Leather Keychain</h4>
-    <p><strong>₱60</strong></p>
-
-    <div class="qty">
-        <button onclick="decrease('leatherkeychain')">-</button>
-        <input type="text" id="leatherkeychain" value="1" readonly>
-        <button onclick="increase('leatherkeychain')">+</button>
-    </div>
-
-    <button onclick="addToCart('Leather Keychain', 60, 'leatherkeychain')">
-        Add to Cart
-    </button>
-</div>
-
-<!-- Cutlery Set -->
-<div class="card">
-    <img src="cutlery.png" alt="Cutlery Set">
-    <h4>Cutlery Set</h4>
-    <p><strong>₱150</strong></p>
-
-    <div class="qty">
-        <button onclick="decrease('cutlery')">-</button>
-        <input type="text" id="cutlery" value="1" readonly>
-        <button onclick="increase('cutlery')">+</button>
-    </div>
-
-    <button onclick="addToCart('Cutlery Set', 150, 'cutlery')">
-        Add to Cart
-    </button>
-</div>
-
-<!-- Bottle Opener -->
-<div class="card">
-    <img src="opener.png" alt="Bottle Opener">
-    <h4>Bottle Opener</h4>
-    <p><strong>₱35</strong></p>
-
-    <div class="qty">
-        <button onclick="decrease('opener')">-</button>
-        <input type="text" id="opener" value="1" readonly>
-        <button onclick="increase('opener')">+</button>
-    </div>
-
-    <button onclick="addToCart('Bottle Opener', 35, 'opener')">
-        Add to Cart
-    </button>
-</div>
-
-<!-- Desk Mirror -->
-<div class="card">
-    <img src="deskmirror.png" alt="Desk Mirror">
-    <h4>Desk Mirror</h4>
-    <p><strong>₱80</strong></p>
-
-    <div class="qty">
-        <button onclick="decrease('deskmirror')">-</button>
-        <input type="text" id="deskmirror" value="1" readonly>
-        <button onclick="increase('deskmirror')">+</button>
-    </div>
-
-    <button onclick="addToCart('Desk Mirror', 80, 'deskmirror')">
-        Add to Cart
-    </button>
-</div>
-
-<!-- Mini Folding Mirror -->
-<div class="card">
-    <img src="minimirror.png" alt="Mini Folding Mirror">
-    <h4>Mini Folding Mirror</h4>
-    <p><strong>₱55</strong></p>
-
-    <div class="qty">
-        <button onclick="decrease('minimirror')">-</button>
-        <input type="text" id="minimirror" value="1" readonly>
-        <button onclick="increase('minimirror')">+</button>
-    </div>
-
-    <button onclick="addToCart('Mini Folding Mirror', 55, 'minimirror')">
-        Add to Cart
-    </button>
-</div>
-
-<!-- ID Card Holder -->
-<div class="card">
-    <img src="idholder.png" alt="ID Card Holder">
-    <h4>ID Card Holder</h4>
-    <p><strong>₱45</strong></p>
-
-    <div class="qty">
-        <button onclick="decrease('idholder')">-</button>
-        <input type="text" id="idholder" value="1" readonly>
-        <button onclick="increase('idholder')">+</button>
-    </div>
-
-    <button onclick="addToCart('ID Card Holder', 45, 'idholder')">
-        Add to Cart
-    </button>
-</div>
-
-<!-- Wallet -->
-<div class="card">
-    <img src="wallet.png" alt="Wallet">
-    <h4>Wallet</h4>
-    <p><strong>₱200</strong></p>
-
-    <div class="qty">
-        <button onclick="decrease('wallet')">-</button>
-        <input type="text" id="wallet" value="1" readonly>
-        <button onclick="increase('wallet')">+</button>
-    </div>
-
-    <button onclick="addToCart('Wallet', 200, 'wallet')">
-        Add to Cart
-    </button>
-</div>
-            </div>
-</section>
-
-
-<!-- CONTACT SECTION -->
-<section class="section" id="contact">
-    <h2>Contact Us</h2>
-    <p>Send us your file and printing details.</p>
-    <form>
-        <input type="text" placeholder="Your Name" required><br>
-        <input type="email" placeholder="Your Email" required><br>
-        <textarea rows="4" placeholder="Printing Details"></textarea><br>
-        <button type="submit">Submit</button>
-    </form>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    © 2026 L.A. Printing Services | All Rights Reserved
-</footer>
-
-<!-- ADD-TO-CART POPUP -->
-<div class="added-popup" id="addedPopup">Item added to cart!</div>
-
-<!-- JAVASCRIPT -->
 <script>
-let cart = [];
+const products = [
+{name:"Bamboo Pen", img:"bamboopen.png"},
+{name:"Notebook", img:"notebook.png"},
+{name:"Bamboo Keychain", img:"bambookeychain.png"},
+{name:"Leather Keychain", img:"leatherkeychain.png"},
+{name:"Cutlery Set", img:"cutlery.png"},
+{name:"Bottle Opener", img:"opener.png"},
+{name:"Bamboo Mirror", img:"deskmirror.png"},
+{name:"Mini Folding Mirror", img:"minimirror.png"},
+{name:"ID Card Holder", img:"idholder.png"},
+{name:"Wallet", img:"wallet.png"}
+];
 
-function addToCart(name, price, id) {
-    let quantity = parseInt(document.getElementById(id).value);
-    let existing = cart.find(item => item.name === name);
-    if(existing){
-        existing.quantity += quantity;
-    } else {
-        cart.push({name, price, quantity});
+let cart = {};
+
+function enterSite(){
+    document.body.classList.add("fade-out");
+    setTimeout(()=>{
+        document.getElementById("welcome").style.display="none";
+        document.getElementById("mainHeader").style.display="flex";
+        document.getElementById("productList").style.display="grid";
+        document.body.classList.remove("fade-out");
+    },800);
+}
+
+const productList = document.getElementById("productList");
+
+products.forEach(p=>{
+    const div = document.createElement("div");
+    div.className="product";
+    div.innerHTML=`
+        <img src="${p.img}">
+        <h4>${p.name}</h4>
+        <div class="qty">
+            <button onclick="updateQty('${p.name}',-1)">-</button>
+            <span id="${p.name}">0</span>
+            <button onclick="updateQty('${p.name}',1)">+</button>
+        </div>
+    `;
+    productList.appendChild(div);
+});
+
+function updateQty(name,change){
+    if(!cart[name]) cart[name]=0;
+    cart[name]+=change;
+    if(cart[name]<0) cart[name]=0;
+    document.getElementById(name).innerText=cart[name];
+    renderCart();
+}
+
+function renderCart(){
+    const cartItems=document.getElementById("cartItems");
+    cartItems.innerHTML="";
+    let totalCount=0;
+    for(let item in cart){
+        if(cart[item]>0){
+            cartItems.innerHTML+=`<p>${item} x ${cart[item]}</p>`;
+            totalCount+=cart[item];
+        }
     }
-    updateCart();
-    showAddedPopup();
-}
-
-function showAddedPopup(){
-    const popup = document.getElementById('addedPopup');
-    popup.style.opacity = '1';
-    popup.style.bottom = '100px';
-    setTimeout(() => {
-        popup.style.opacity = '0';
-        popup.style.bottom = '80px';
-    }, 1500);
-}
-
-function updateCart() {
-    let cartItems = document.getElementById("cart-items");
-    let cartCount = document.getElementById("cart-count");
-    let cartTotal = document.getElementById("cart-total");
-
-    cartItems.innerHTML = "";
-    let total = 0;
-    let count = 0;
-
-    cart.forEach((item, index)=>{
-        total += item.price * item.quantity;
-        count += item.quantity;
-
-        cartItems.innerHTML += `
-            <div>
-                <strong>${item.name}</strong><br>
-                ₱${item.price} x ${item.quantity} = ₱${item.price * item.quantity}<br>
-                <button onclick="removeItem(${index})">Remove</button>
-                <hr>
-            </div>
-        `;
-    });
-
-    cartTotal.textContent = total;
-    cartCount.textContent = count;
-}
-
-function removeItem(index){
-    cart.splice(index,1);
-    updateCart();
+    document.getElementById("cartCount").innerText=totalCount;
 }
 
 function toggleCart(){
-    let modal = document.getElementById("cartModal");
-    modal.style.display = modal.style.display === "block" ? "none" : "block";
+    document.getElementById("cartPanel").classList.toggle("active");
 }
-
-function increase(id){
-    let input = document.getElementById(id);
-    input.value = parseInt(input.value) + 1;
-}
-
-function decrease(id){
-    let input = document.getElementById(id);
-    if(parseInt(input.value) > 1){
-        input.value = parseInt(input.value) - 1;
-    }
-}
-function toggleCheckout() {
-    const modal = document.getElementById("checkoutModal");
-    modal.style.display = modal.style.display === "block" ? "none" : "block";
-
-    if(modal.style.display === "block"){
-        // populate items and total
-        let container = document.getElementById("checkout-items");
-        let totalEl = document.getElementById("checkout-total");
-        let total = 0;
-        container.innerHTML = "";
-
-        cart.forEach(item => {
-            container.innerHTML += `<p>${item.name} x ${item.quantity} = ₱${item.price * item.quantity}</p>`;
-            total += item.price * item.quantity;
-        });
-        totalEl.textContent = total;
-    }
-}
-
-// Update payment details dynamically
-document.getElementById("payment").addEventListener("change", function(){
-    let val = this.value;
-    let details = document.getElementById("payment-details");
-    if(val === "GCash") {
-        details.innerHTML = "Send to GCash number: 09123456789";
-    } else if(val === "Bank") {
-        details.innerHTML = "Bank Account: 1234-5678-9012 (Bank Name)";
-    } else {
-        details.innerHTML = "";
-    }
-});
-
-function confirmOrder() {
-    const payment = document.getElementById("payment").value;
-    if(!payment){
-        alert("Please select a mode of payment");
-        return;
-    }
-    alert(`Order confirmed! Mode of payment: ${payment}`);
-    cart = []; // clear cart
-    updateCart(); 
-    toggleCheckout();
-}
-function confirmOrder() {
-    const payment = document.getElementById("payment").value;
-    if(!payment){
-        alert("Please select a mode of payment");
-        return;
-    }
-
-    // Show popup
-    const popup = document.getElementById("orderConfirmedPopup");
-    popup.style.opacity = "1";
-    popup.style.transform = "translate(-50%, -50%) scale(1.1)";
-
-    // Hide after 1.5s
-    setTimeout(() => {
-        popup.style.opacity = "0";
-        popup.style.transform = "translate(-50%, -50%) scale(1)";
-    }, 1500);
-
-    cart = []; // clear cart
-    updateCart(); 
-    toggleCheckout();
-}
-
 </script>
 
-</div>  <!-- closes main-site -->
 </body>
 </html>
