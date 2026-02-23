@@ -169,25 +169,48 @@ header nav a:hover {
 }
 
 /* ===== WELCOME PAGE ===== */
-.welcome {
+/* ===== WELCOME PAGE ===== */
+.welcome-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    flex-direction: column;
-    transition: opacity 1s ease;
+    text-align: center;
+    padding: 0 20px;
+    background-color: #fff;
 }
 
-.welcome.fade-out {
-    opacity: 0;
+.welcome-container h1.welcome-title {
+    font-size: 48px; /* big title */
+    margin: 0;
 }
 
-.welcome .logo {
-    width: 150px;
+.welcome-container h2.welcome-tagline {
+    font-size: 24px; /* tagline */
+    margin: 10px 0;
+    font-style: italic; /* elegant style */
 }
 
-button {
+.welcome-container p.welcome-subtitle {
+    font-size: 16px;
+    margin: 5px 0 20px 0;
+    color: #333;
+}
+
+.welcome-container button.welcome-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
     cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.welcome-container button.welcome-btn:hover {
+    transform: scale(1.05);
 }
 </style>
 </head>
@@ -195,10 +218,10 @@ button {
 
 <!-- ===== WELCOME PAGE ===== -->
 <div class="welcome-container" id="welcomePage">
-    <img src="logo.png" alt="LA Printing Logo" class="logo">
-    <h1>LA Printing Services</h1>
-    <h3>Engraving Services</h3>
-    <button id="orderNow">Order Now</button>
+    <h1 class="welcome-title">LA Printing Services</h1>
+    <h2 class="welcome-tagline">Precision. Elegant. Lasting Engravings.</h2>
+    <p class="welcome-subtitle">Your trusted partner for custom engraved products.</p>
+    <button id="orderNow" class="welcome-btn">Order Now</button>
 </div>
 
 <!-- ===== SHOP PAGE ===== -->
