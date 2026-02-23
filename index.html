@@ -138,23 +138,39 @@ header nav a:hover {
     justify-content: center;
 }
 
-/* ===== CART SIDEBAR ===== */
-.cart-sidebar {
+/* ===== MINI CART POPUP ===== */
+#miniCart {
     position: fixed;
-    right: -300px;
-    top: 0;
-    width: 300px;
-    height: 100%;
+    bottom: 70px;
+    right: 20px;
+    width: 250px;
+    max-height: 300px;
     background-color: #fff;
-    border-left: 1px solid #000;
-    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 12px;
+    padding: 10px;
     overflow-y: auto;
-    transition: right 0.3s ease;
-    z-index: 90;
+    display: none;
+    z-index: 99;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.cart-sidebar.active {
-    right: 0;
+#miniCart h3 {
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+
+#miniCart p {
+    margin: 5px 0;
+}
+
+#miniCart button {
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 8px;
 }
 
 /* ===== WELCOME PAGE ===== */
@@ -209,14 +225,16 @@ button {
     <!-- Products injected by JS -->
 </main>
 
-<div class="cart-sidebar" id="cart">
-    <h2>Your Cart</h2>
-    <div id="cart-items"></div>
-    <button onclick="checkout()">Checkout</button>
+<!-- Floating Cart -->
+<div id="floatingCart" onclick="toggleMiniCart()">
+    🛒 <span id="cart-count">0</span>
 </div>
 
-<div id="floatingCart" onclick="toggleCart()">
-    🛒 <span id="cart-count">0</span>
+<!-- Mini Cart Popup -->
+<div id="miniCart">
+    <h3>Your Cart</h3>
+    <div id="cart-items"></div>
+    <button onclick="checkout()">Checkout</button>
 </div>
 </div>
 
@@ -299,8 +317,9 @@ function updateCart() {
     document.getElementById('cart-count').textContent = count;
 }
 
-function toggleCart() {
-    document.getElementById('cart').classList.toggle('active');
+function toggleMiniCart() {
+    const mini = document.getElementById('miniCart');
+    mini.style.display = (mini.style.display === 'block') ? 'none' : 'block';
 }
 
 function checkout() {
