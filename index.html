@@ -163,9 +163,9 @@ header{
 
 .product{
     border:1px solid #000;
-    border-radius:18px; /* smooth corners */
+    border-radius:18px;
     padding:20px;
-    text-align:center; /* center all content inside card */
+    text-align:center;
     background:#fff;
     transition:0.3s;
 }
@@ -180,6 +180,16 @@ header{
     height:160px;
     object-fit:contain;
     margin-bottom:15px;
+}
+    .products-wrapper{
+    display:flex;
+    justify-content:center; /* center ang grid */
+}
+
+.products{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px)); /* fixed width para hindi kumalat */
+    gap:40px;
 }
 
 .qty{
@@ -234,7 +244,7 @@ input, select{
     width:100%;
     padding:10px 0;
     margin-top:12px;
-    border-radius:12px; /* curved corners only */
+    border-radius:12px;
     background:#000;
     color:#fff;
     border:1px solid #000;
@@ -473,7 +483,9 @@ input, select{
 <!-- PRODUCTS -->
 <section class="products-section" id="productsSection">
     <h2 class="section-title">ENGRAVED PRODUCTS</h2>
-    <div class="products" id="productList"></div>
+    <div class="products-wrapper">
+        <div class="products" id="productList"></div>
+    </div>
 </section>
 
 <!-- CART -->
