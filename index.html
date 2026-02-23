@@ -19,7 +19,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 20px; /* reduce top/bottom padding */
+    padding: 5px 20px; /* minimal padding */
     background-color: #000;
     color: #fff;
     position: sticky;
@@ -28,23 +28,19 @@ header {
     flex-wrap: wrap;
 }
 
+/* Fix logo */
 header .logo {
-    height: 50px; /* fixed height */
-    width: auto;  /* maintain aspect ratio */
-    object-fit: contain; /* prevent stretching */
+    height: 50px;
+    width: auto;
+    object-fit: contain;
     margin-right: 10px;
 }
 
-header .title-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: auto;
-}
-
-header .title-container h1 {
+/* Remove default margin from headings inside header */
+header .title-container h1,
+header .title-container h3 {
     margin: 0;
-    font-size: 20px;
+    padding: 0;
 }
 
 header .title-container h3 {
