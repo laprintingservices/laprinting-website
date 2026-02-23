@@ -216,6 +216,15 @@ header nav a:hover {
 .welcome-container button.welcome-btn:hover {
     transform: scale(1.05);
 }
+    .fade-out {
+    opacity: 0;
+    transition: opacity 1s ease; /* 1-second fade out */
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 1s ease; /* 1-second fade in */
+}
 </style>
 </head>
 <body class="welcome">
@@ -281,13 +290,22 @@ const cart = {};
 
 // ===== WELCOME → SHOP TRANSITION =====
 document.getElementById('orderNow').addEventListener('click', () => {
-    document.body.classList.add('fade-out');
+    const welcome = document.getElementById('welcomePage');
+    const shop = document.getElementById('shopPage');
+
+    // Fade out welcome page
+    welcome.classList.add('fade-out');
+
     setTimeout(() => {
-        document.getElementById('welcomePage').style.display = 'none';
-        document.getElementById('shopPage').style.display = 'block';
-        document.body.classList.remove('fade-out');
+        welcome.style.display = 'none'; // hide welcome page
+        shop.style.display = 'block';    // show shop page
+
+        // Optional: fade in main page
+        shop.classList.add('fade-in');
+
+        // Render products after showing main page
         renderProducts();
-    }, 1000);
+    }, 1000); // match CSS transition duration
 });
 
 // ===== RENDER PRODUCTS =====
