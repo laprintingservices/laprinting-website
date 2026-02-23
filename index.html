@@ -155,15 +155,15 @@ header{
 
 .products{
     display:grid;
-    justify-content:center; /* important para center ang grid */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* bawat card min 250px, max 1fr */
     gap:40px;
+    justify-content:center; /* center last row kung hindi full */
     padding-bottom:40px;
 }
 
 .product{
     border:1px solid #000;
-    border-radius:18px;
+    border-radius:18px; /* curved corners */
     padding:20px;
     text-align:center;
     background:#fff;
