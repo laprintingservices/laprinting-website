@@ -368,6 +368,42 @@ input, select{
 .floating-cart:hover{
     transform:scale(1.1);
 }
+    .home-section{
+    padding:60px 40px;
+    text-align:center;
+    background:#fff;
+}
+
+.home-tagline{
+    font-size:28px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.home-subtext{
+    font-size:16px;
+    opacity:0.7;
+    margin-bottom:40px;
+}
+
+.home-history{
+    max-width:800px;
+    margin:0 auto;
+    text-align:center;
+}
+
+.home-history h3{
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.home-history p{
+    font-size:16px;
+    line-height:1.6;
+    opacity:0.8;
+}
 
 /* Cart Panel */
 .cart-panel{
@@ -422,7 +458,21 @@ input, select{
     <section id="homeSection">
     <h2>Premium Engraving & Printing Solutions</h2>
 </section>
+    
+<!-- HOME / HISTORY -->
+<section id="homeSection" class="home-section">
+    <h2 class="home-tagline">Premium Engraving & Printing Solutions</h2>
+    <p class="home-subtext">Your trusted partner for custom engraved products.</p>
 
+    <div class="home-history">
+        <h3>Our Story</h3>
+        <p>
+            The owner of <b>LA Printing Services</b> was a young entrepreneur with a dream to have his own business from a very young age.  
+            Today, every order placed at LA Printing Services helps give hope to a student with dreams, empowering them to pursue and achieve their goals.
+        </p>
+    </div>
+</section>
+    
 <!-- PRODUCTS -->
 <section class="products-section" id="productsSection">
 
@@ -614,9 +664,11 @@ function openAdmin(){
     });
 }
 function showHome(){
+    document.getElementById("homeSection").style.display="block";
     document.getElementById("productsSection").style.display="block";
     document.getElementById("contactSection").style.display="none";
-    // Scroll or show tagline section
+
+    // Scroll to home section smoothly
     document.getElementById("homeSection").scrollIntoView({behavior:"smooth"});
 }
 
