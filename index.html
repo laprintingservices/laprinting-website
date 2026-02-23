@@ -228,6 +228,19 @@ header nav a:hover {
     border: none;
     cursor: pointer;
 }
+    #itemAddedPopup {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 150;
+    pointer-events: none;
+}
 
 /* ===== WELCOME PAGE ===== */
 .welcome-container {
@@ -404,8 +417,20 @@ function decrement(i){
 function addToCart(i){
     const qty = parseInt(document.getElementById(`qty-${i}`).textContent);
     if(qty===0) return;
-    cart[products[i].name] = {qty: qty, price: products[i].price};
+    const productName = products[i].name;
+
+    // Add/update cart
+    cart[productName] = {qty: qty, price: products[i].price};
+
+    // Update mini cart & count
     updateCart();
+
+    // Show popup
+    const popup = document.getElementById('itemAddedPopup');
+    popup.style.opacity = '1';
+    setTimeout(() => {
+        popup.style.opacity = '0';
+    }, 1500);
 }
 function updateCart(){
     const cartEl = document.getElementById('cart-items');
@@ -458,6 +483,8 @@ document.getElementById('checkoutModal').addEventListener('click', e=>{
     if(e.target.id==='checkoutModal') e.target.style.display='none';
 });
 </script>
-
+    
+<div id="itemAddedPopup">Item Added to Cart</div>
+    
 </body>
 </html>
