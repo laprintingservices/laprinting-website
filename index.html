@@ -6,6 +6,56 @@
 <title>LA Printing Services</title>
 
 <style>
+    header{
+    display:none;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:#000;
+    color:#fff;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.header-logo{
+    height:55px;
+}
+
+.brand-title{
+    font-weight:bold;
+    font-size:18px;
+    letter-spacing:1px;
+}
+
+.brand-sub{
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.nav-menu a{
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+.nav-menu a:hover{
+    opacity:0.7;
+}
+
+.cart-icon{
+    cursor:pointer;
+}
 body{
     margin:0;
     font-family: 'Segoe UI', sans-serif;
@@ -119,11 +169,22 @@ input, select{
 
 <!-- HEADER -->
 <header id="mainHeader">
-    <div>
-        <h2>LA Printing Services</h2>
-        <small>Engraving Services</small>
+
+    <div class="header-left">
+        <img src="logo.png" class="header-logo">
+        <div class="header-text">
+            <div class="brand-title">LA PRINTING SERVICES</div>
+            <div class="brand-sub">Engraving Services</div>
+        </div>
     </div>
-    <div class="cart-icon" onclick="toggleCart()">🛒 (<span id="cartCount">0</span>)</div>
+
+    <nav class="nav-menu">
+        <a href="#" onclick="showHome()">HOME</a>
+        <a href="#" onclick="showProducts()">PRODUCTS</a>
+        <a href="#" onclick="showContact()">CONTACT</a>
+        <span class="cart-icon" onclick="toggleCart()">🛒 (<span id="cartCount">0</span>)</span>
+    </nav>
+
 </header>
 
 <!-- PRODUCTS -->
@@ -135,6 +196,13 @@ input, select{
     <div id="cartItems"></div>
     <h4>Total: ₱<span id="totalPrice">0</span></h4>
     <button onclick="goCheckout()">Checkout</button>
+</div>
+    
+    <div class="contact-section" id="contactSection" style="display:none; padding:60px; text-align:center;">
+    <h2>Contact Us</h2>
+    <p>📍 Poblacion Itaas</p>
+    <p>📞 09XXXXXXXXX</p>
+    <p>📧 laprintingservices@email.com</p>
 </div>
 
 <!-- CHECKOUT -->
@@ -279,6 +347,20 @@ function openAdmin(){
             <p>Total: ₱${o.total}</p>
         `;
     });
+}
+    function showHome(){
+    document.getElementById("productList").style.display="none";
+    document.getElementById("contactSection").style.display="none";
+}
+
+function showProducts(){
+    document.getElementById("productList").style.display="grid";
+    document.getElementById("contactSection").style.display="none";
+}
+
+function showContact(){
+    document.getElementById("productList").style.display="none";
+    document.getElementById("contactSection").style.display="block";
 }
 </script>
 
